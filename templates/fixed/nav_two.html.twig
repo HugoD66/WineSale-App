@@ -1,0 +1,12 @@
+<nav class="nav-two">
+    <img src="{{ asset('picture/wine-WithoutBG.png') }}" alt="">
+    <div class="nav-item-list">
+        <a href="{{ path('app_home') }}">Accueil</a>
+        {% if app.user %}
+            <a href="{{ path('app_user', { 'id' : app.user.id }) }}">Compte</a>
+        {% else %}
+            <a href="{{ path('app_non_inscrit') }}">Compte</a>
+        {% endif %}
+    </div>
+</nav>
+

@@ -1,0 +1,251 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    {% include 'fixed/nav.html.twig' %}
+    <div class="content" id="accueil">
+        <header class="header-mobile">
+            <h1>Win'Export</h1>
+            <h2>Du producteur<br>A votre porte</h2>
+            <div class="buttonList">
+                <button type="button" class="buttonCommand">
+                    {% if app.user %}
+                        <a href="{{ path('app_user', { 'id': user.id}) }}">
+                            Compte
+                        </a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}">
+                            Connexion
+                        </a>
+                    {% endif %}
+                </button>
+                <button type="button" class="buttonListeWine">
+                    <a href="{{ path('app_list_wines') }}">
+                        Nos vins ➔
+                    </a>
+                </button>
+            </div>
+        </header>
+        <header class="header-desktop">
+            <h1>Win'Export</h1>
+            <h2>Du producteur<br>A votre porte</h2>
+            <div class="buttonList">
+                <button type="button" class="buttonCommand">
+                    {% if app.user %}
+                        <a href="{{ path('app_user', { 'id': user.id}) }}">
+                            Compte
+                        </a>
+                    {% else %}
+                    <a href="{{ path('app_login') }}">
+                        Connexion
+                    </a>
+                    {% endif %}
+                </button>
+                <button type="button" class="buttonListeWine">
+                    <a href="{{ path('app_list_wines') }}">
+                        Nos vins ➔
+                    </a>
+                </button>
+            </div>
+        </header>
+        <section id="propos">
+            <div class="section-mobile">
+                <div class="custom-title-one">
+                    <h3>A Propos</h3>
+                    <img src="{{ asset('picture/title/title-interogation.png') }}" alt="" class="title-h3">
+                </div>
+                <div class="propos-desc">
+                    <div class="propos-explain">
+                        <p>Liquorice tiramisu croissant sweet cupcake powder. Pastry gummies gummi bears gummies lemon drops chocolate chocolate cake cookie. Cupcake soufflé powder lollipop biscuit danish chupa chups lemon drops oat cake.</p>
+                        <button type="button" class="button-custom-one">
+                            {% if app.user %}
+                                <a href="{{ path('app_deja_inscrit') }}">
+                                    S'enregistrer
+                                </a>
+                            {% else %}
+                            <a href="{{ path('app_register') }}">
+                                S'enregistrer
+                            </a>
+                            {% endif %}
+                        </button>
+                    </div>
+                    <img src="{{ asset('picture/apropos.png') }}" alt="">
+                </div>
+            </div>
+            <div class="section-desktop">
+                <div class="custom-title-one">
+                    <h3>A Propos</h3>
+                    <img src="{{ asset('picture/title/title-interogation.png') }}" alt="" class="title-h3">
+                </div>
+                <div class="propos-desc">
+                    <img src="{{ asset('picture/apropos.png') }}" alt="">
+                    <div class="propos-explain">
+                        <p>Liquorice tiramisu croissant sweet cupcake powder. Pastry gummies gummi bears gummies lemon drops chocolate chocolate cake cookie. Cupcake soufflé powder lollipop biscuit danish chupa chups lemon drops oat cake.</p>
+                        <button type="button" class="button-custom-one">
+                            {% if app.user %}
+                                <a href="{{ path('app_deja_inscrit') }}">
+                                    S'enregistrer
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_register') }}">
+                                    S'enregistrer
+                                </a>
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <article id="wineList">
+            <div class="article-mobile">
+                <div class="custom-title-one">
+                    <h3>Nos vins</h3>
+                    <img src="{{ asset('picture/title/title-bootle.png') }}" alt="" class="title-h3">
+                </div>
+                <div class="carousel-mobile">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            {% for wine in wines %}
+                            <div class="carousel-item {% if loop.first %} active {% endif %}">
+                                <img class="d-block w-100" src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="First slide">
+                                    <h5>{{ wine.title }}</h5>
+                                <div class="descri">
+                                    <ul>
+                                        <li>Prix: {{ wine.price }}$</li>
+                                        <li>Année: {{ wine.year }}.</li>
+                                    </ul>
+                                    <div class="icone">
+                                        <a href="{{ path('app_wine', { 'id' : wine.id }) }}">
+                                            <img src="{{ asset('picture/carousel/icons8-panier-charg-1--unscreen.gif') }}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="list-wines">
+                    <button type="button" class="button-custom-one">
+                        <a href="{{ path('app_list_wines') }}">
+                            Tous nos vins
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="article-desktop">
+                <div class="custom-title-one">
+                    <h3>Nos vins</h3>
+                    <img src="{{ asset('picture/title/title-bootle.png') }}" alt="" class="title-h3">
+                </div>
+                <div class="article-mediaquery">
+                    <div class="list-wines">
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus expedita iste nulla qui </p>
+                        <button type="button" class="button-custom-one">
+                            <a href="{{ path('app_list_wines') }}">
+                                Tous nos vins
+                            </a>
+                        </button>
+                    </div>
+                    <div class="carousel-desktop">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                {% for wine in wines %}
+                                    <div class="carousel-item {% if loop.first %} active {% endif %}">
+                                        <img class="d-block w-100" src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="First slide">
+                                        <h5>{{ wine.title }}</h5>
+                                        <div class="descri">
+                                            <ul>s
+                                                <li>Prix: {{ wine.price }}$</li>
+                                                <li>Année: {{ wine.year }}.</li>
+                                            </ul>
+                                            <div class="icone">
+                                                <a href="{{ path('app_wine', { 'id' : wine.id }) }}">
+                                                    <img src="{{ asset('picture/carousel/icons8-panier-charg-1--unscreen.gif') }}" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <aside id="contact">
+            <div class="custom-title-one">
+                <h3>Nous contacter</h3>
+                <img src="{{ asset('picture/title/title-feather.png') }}" alt="" class="title-h3">
+            </div>
+            <div class="aside-responsive">
+                <div class="form">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    <div class="form-responsive">
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.title) }}
+                    </div>
+                    {{ form_row(form.content) }}
+                    {{ form_row(form.submit, { 'label': ' '}) }}
+                    {{ form_end(form) }}
+                </div>
+                <div class="images">
+                    <a href="mailto:dessauw.hugo@gmail.com">
+                        <img src="{{ asset('picture/icones/letter.png') }}" alt="">
+                    </a>
+                    <a href="tel:+662560152">
+                        <img src="{{ asset('picture/icones/tel.png') }}" alt="">
+                    </a>
+                </div>
+                <div class="informations">
+                    <div class="contact-inform">
+                        <ul>
+                            <li>66000 Perpignan</li>
+                            <li>21 rue Nicolas Poussin</li>
+                            <li>France</li>
+                        </ul>
+                    </div>
+                    <div class="contact">
+                        <a href="https://www.linkedin.com/in/hugo-dessauw-07a901250/">
+                            <img src="{{ asset('picture/icones/linkedin.png') }}" alt="">
+                        </a>
+                        <a href="https://github.com/HugoD66">
+                            <img src="{{ asset('picture/icones/github.gif') }}" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/hugo.dessauw">
+                            <img src="{{ asset('picture/icones/facebook.png') }}" alt="">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+        {% include 'fixed/footer.html.twig' %}
+    </div>
+{% endblock %}

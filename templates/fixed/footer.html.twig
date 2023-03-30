@@ -1,0 +1,21 @@
+<footer>
+    <div class="footer-responsive">
+        <a href="#returnTop">
+            <img src="{{ asset('picture/icones/arrow.png') }}" alt="" class="img-arrow">
+        </a>
+        <h6>Win'Export</h6>
+        <img src="{{ asset('picture/icones/panier.png') }}" alt="" class="img-panier">
+    </div>
+</footer>
+<script>
+    $(window).scroll(function() {
+        var articleOffset = $("article").offset().top;
+        var windowHeight = $(window).height();
+        var scrollTop = $(window).scrollTop() + windowHeight - articleOffset;
+        if(scrollTop > 0) {
+            $("footer").css("display", "block");
+        } else {
+            $("footer").css("display", "none");
+        }
+    });
+</script>

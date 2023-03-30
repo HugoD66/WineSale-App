@@ -1,0 +1,5 @@
+{% for wine in this.AllWines %}
+    {{ component('wine', {
+        id: wine.id
+    }) }}
+{% endfor %}

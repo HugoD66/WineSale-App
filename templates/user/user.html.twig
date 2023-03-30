@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+    {% include'fixed/nav_three.html.twig' %}
+    <div class="content">
+        <div class="user-gestion">
+            <div class="custom-title-one custom-title-one-form">
+                <h3>Bonjour, {{ user.firstname }}</h3>
+                <img src="{{ asset('picture/title/title-user-gestion.png') }}" alt="" class="title-h3">
+            </div>
+
+            <ul class="user-coordonnees">
+                <li><u>Email</u> : {{ user.email }}</li>
+                <li><u>Prénom</u> : {{ user.firstname }}</li>
+                <li><u>Nom</u> : {{ user.lastname }}</li>
+                <li><u>Anniversaire</u> : {{ user.birthday|date('d-m-Y H:i:s') }}</li>
+            </ul>
+            {% if  user.getPicture %}
+                <div class="picture-user">
+                    <img id="user-picture" src="{{ asset('picture/recipe-picture/' ~ user.getPicture()) }}" alt="Photo de profil sans enregistrement.">
+                </div>
+            {% else %}
+                <h4>Ajouter une photo : </h4>
+                <div class="form-picture-user">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    {{ form_row(form.submit, { 'label': ' '}) }}
+                    {{ form_end(form) }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="user-gestion-relative">
+            <img src="{{ asset('picture/icones/arrow-bot.svg') }}" alt="">
+            <div class="user-button-list">
+                <button type="button" class="button-custom-three"><a href="{{ path('app_change_password', { 'id' : user.id}) }}">Changer MDP</a></button>
+                <button type="button" class="button-custom-three"><a href="{{ path('app_change_picture', { 'id' : user.id}) }}">Changer Photo </a></button>
+            </div>
+            <div class="user-list-commandes">
+{# {% if user.commande %} #}
+                <h4>Vos commandes : </h4>
+                <br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br>s
+                <br><br><br><br><br><br><br>
+            </div>
+        </div>
+        {% include'fixed/footer_two.html.twig' %}
+    </div>
+{% endblock %}

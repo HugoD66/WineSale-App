@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    {% include'fixed/nav_two.html.twig' %}
+    <div class="background-image-one"></div>
+    <div class="content">
+        <div class="form-one">
+            <div class="custom-title-one custom-title-one-form">
+                <h3>S'enregistrer</h3>
+                <img src="{{ asset('picture/title/title-feather.png') }}" alt="" class="title-h3">
+            </div>
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email, {label: 'Email'}) }}
+            {{ form_row(registrationForm.firstname, {label: 'Prénom'}) }}
+            {{ form_row(registrationForm.lastname, {label: 'Nom'}) }}
+            {{ form_row(registrationForm.birthday, {
+                label: 'Anniversaire',
+                attr: {
+                    class: 'birthday-custom'
+                }
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms, {label: 'Accepter termes'}) }}
+            <button type="submit" class="button-custom-two">S'enregistrer</button>
+            {{ form_end(registrationForm) }}
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger custom-return" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+        </div>
+        {% include'fixed/footer_two.html.twig' %}
+    </div>
+{% endblock %}

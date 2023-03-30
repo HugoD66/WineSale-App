@@ -1,0 +1,26 @@
+    <div{{ attributes }} class="panel">
+        <input
+                class="input-search-suite"
+                type="text"
+                data-model="query"
+                value="{{ query }}"
+                placeholder="Château ..."
+        >
+            <div class="panel-wine">
+                {% if query is empty  %}
+                    {% for wine in this.AllWines %}
+                        {{ component('wine', {
+                            id: wine.id
+                        }) }}
+                    {% endfor %}
+                {% else %}
+            {% for wine in this.wines %}
+                        {{ component('wine', {
+                            'id': wine.id
+                        }) }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

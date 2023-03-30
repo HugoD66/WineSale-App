@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+{% include ('fixed/nav_two.html.twig') %}
+    <div class="content">
+        <div class="list-wine">
+            <div class="custom-title-one custom-title-one-form">
+                <h3>Nos vins</h3>
+                <img src="{{ asset('picture/title/title-bootle.png') }}" alt="" class="title-h3">
+            </div>
+        {{component('wines_search') }}
+        </div>
+        {% include ('fixed/footer_two.html.twig') %}
+
+    </div>
+
+{% endblock %}

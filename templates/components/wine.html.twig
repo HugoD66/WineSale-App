@@ -1,0 +1,23 @@
+<div class="wine-unit">
+    <h2>{{ this.wine.title }}</h2>
+    <div class="wine-unit-list">
+        <ul>
+            <li>Année: {{ this.wine.year }}</li>
+            <li>Prix: {{ this.wine.price }}€</li>
+            <li>
+                <button type="button" class="button-custom-three">
+                    <a href="{{ path('app_wine', { 'id' : this.wine.id}) }}">
+                        Achat
+                    </a>
+                </button>
+            </li>
+        </ul>
+        <a href="{{ path('app_wine', { 'id' : this.wine.id}) }}">
+            <img src="{{ asset('picture/recipe-picture/' ~ this.wine.getPicture()) }}" alt="Photo de la bouteille de vin.">
+        </a>
+    </div>
+    <p>
+        {{ this.wine.description }}
+    </p>
+    <div id="horiz-line"></div>
+</div>

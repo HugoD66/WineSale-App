@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+    {% include'fixed/nav_two.html.twig' %}
+    <div class="background-image-two"></div>
+    <div class="content">
+        <div class="form-two">
+            <div class="custom-title-one custom-title-one-form">
+                <h3>Connexion</h3>
+                <img src="{{ asset('picture//title/title-feather.png') }}" alt="" class="title-h3">
+            </div>
+            <form action="{{ path('app_login') }}" method="post">
+                <div class="form-row">
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}">
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="_password">
+                </div>
+
+
+                {# If you want to control the URL the user is redirected to on success
+                <input type="hidden" name="_target_path" value="/account"> #}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <button type="submit" class="button-custom-two">Se connecter</button>
+            </form>
+            {% if error %}
+                <div class="custom-return">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+        </div>
+    {% include'fixed/footer_two.html.twig' %}
+    </div>
+{% endblock %}

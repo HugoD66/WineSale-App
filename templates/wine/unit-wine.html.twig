@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+{% include'fixed/nav_two.html.twig' %}
+<div class="content">
+        <div class="wine-by-id">
+            <div class="custom-title-one">
+                <h3>{{ wine.title }}</h3>
+                <img src="{{ asset('picture/title/title-bootle.png') }}" alt="" class="title-h3">
+            </div>
+            <button type="button" class="button-return">
+                <a href="{{ path('app_list_wines') }}">
+                <img src="{{ asset('picture/icones/arrow_back.png') }}" alt="">
+                </a>
+            </button>
+            <div class="wine-by-id-unit">
+                <img src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="Photo de la bouteille de vin.">
+                <div class="wine-button-year">
+                    <div class="wine-desc">
+                        <p>Année: <u>{{ wine.year }}</u></p>
+                        <p>Prix: <u>{{ wine.price }}€</u></p>
+                    </div>
+                    <div class="wine-buttons">
+                        <button type="button" class="button-custom-one">
+                            <a href="#">
+                                Achat
+                            </a>
+                        </button>
+                        <button type="button" class="button-custom-one">
+                            <a href="#">
+                                ??????
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <p>{{ wine.description }}</p>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    {% include'fixed/footer_two.html.twig' %}
+</div>
+{% endblock %}
