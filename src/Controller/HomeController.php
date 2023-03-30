@@ -9,6 +9,7 @@ use App\Form\ContactUsType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,6 +33,9 @@ class HomeController extends AbstractController
             $contactUs = $form->getData();
             $entityManager->persist($contactUs);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Message envoyé avec succès.');
+
         }
 
 

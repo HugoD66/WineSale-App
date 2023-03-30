@@ -2,6 +2,21 @@
 {% block title %}{{ title }}{% endblock %}
 {% block body %}
     {% include 'fixed/nav.html.twig' %}
+
+    <div id="success-message-async"></div>
+    {% for message in app.flashes('success') %}
+        <div class="success-custom">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <script>
+        setTimeout(function() {
+            const successCustom = document.querySelector('.success-custom');
+            if (successCustom !== null) {
+                successCustom.classList.add('fadeout');
+            }
+        }, 1500);
+    </script>
     <div class="content" id="accueil">
         <header class="header-mobile">
             <h1>Win'Export</h1>
@@ -243,7 +258,6 @@
                         </a>
                     </div>
                 </div>
-
             </div>
         </aside>
         {% include 'fixed/footer.html.twig' %}

@@ -10853,6 +10853,7 @@ body .nav-two .nav-item-list, body .nav-three .nav-item-list {
 }
 body .nav-two .nav-item-list a, body .nav-three .nav-item-list a {
   text-decoration: none;
+  padding: 20px;
   color: #a2a2a2;
   font-family: "arial", sans-serif;
   font-size: 40px;
@@ -10865,6 +10866,9 @@ body .nav-two .nav-item-list a:hover, body .nav-three .nav-item-list a:hover {
   text-underline-offset: 2vh;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+}
+body .nav-two .nav-item-list a:active, body .nav-three .nav-item-list a:active {
+  color: black;
 }
 body .content {
   margin-top: 10vh;
@@ -11395,6 +11399,9 @@ body .content .wine-by-id {
   width: 100%;
   min-height: 85vh;
   background-color: #93c5fd;
+  position: relative;
+  opacity: 1;
+  z-index: 2;
 }
 body .content .wine-by-id .wine-by-id-unit {
   display: flex;
@@ -11470,7 +11477,7 @@ body .content .user-gestion {
   background-position: center;
   background-repeat: no-repeat;
   position: fixed;
-  height: 1200px;
+  height: auto;
   z-index: 3;
 }
 body .content .user-gestion h4, body .content .user-gestion .h4 {
@@ -11559,24 +11566,126 @@ body .content .user-gestion-relative img {
   margin: auto;
   width: 75px;
 }
+body .content .user-gestion-relative h4, body .content .user-gestion-relative .h4 {
+  font-family: "Tilt Neon", cursive;
+  font-size: 40px;
+}
 body .content .user-gestion-relative .user-button-list {
   width: 100%;
-  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
+  margin: 4% auto;
 }
 body .content .user-gestion-relative .user-button-list button {
   width: 25vw;
   font-size: 35px;
   margin-bottom: 5%;
 }
+body .content .user-gestion-relative .wine-list {
+  margin-top: 50px;
+  width: 95%;
+  display: flex; /* Pour aligner les blocs horizontalement */
+  flex-wrap: nowrap; /* Empêcher les blocs de retourner à la ligne */
+  overflow-x: auto; /* Ajouter une barre de défilement en cas de dépassement */
+  white-space: nowrap; /* Empêcher les blocs enfants de revenir à la ligne */
+  margin-bottom: 12vh;
+}
+body .content .user-gestion-relative .wine-list .wine-list-unit {
+  position: relative; /* Ajouter position relative au conteneur parent */
+  height: auto;
+  margin: 1%;
+  border-radius: 10px;
+  border: 1px solid #70b7c9;
+  min-width: 500px;
+  background-color: whitesmoke;
+}
+body .content .user-gestion-relative .wine-list .wine-list-unit h5, body .content .user-gestion-relative .wine-list .wine-list-unit .h5 {
+  font-size: 40px;
+  color: #2d2d2d;
+  font-family: "Tilt Neon", cursive;
+  text-align: center;
+}
+body .content .user-gestion-relative .wine-list .wine-list-unit .wine-unit-desc {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+body .content .user-gestion-relative .wine-list .wine-list-unit .wine-unit-desc ul {
+  list-style: none;
+  font-size: 32px;
+  font-family: "Tilt Neon", cursive;
+}
+body .content .user-gestion-relative .wine-list .wine-list-unit .wine-unit-desc .button-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+body .content .user-gestion-relative .wine-list .wine-list-unit .wine-unit-desc .button-list button {
+  margin: 3%;
+}
+body .content .user-gestion-relative .received-message {
+  width: 96%;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+body .content .user-gestion-relative .received-message .card-message {
+  width: 100%;
+  border: 1px solid gray;
+  background-color: transparent;
+}
+body .content .user-gestion-relative .received-message .card-message h5, body .content .user-gestion-relative .received-message .card-message .h5 {
+  font-size: 38px;
+  margin-top: 50px;
+  margin-left: 50px;
+  font-family: "Tilt Neon", cursive;
+  color: #114056;
+  margin-bottom: 2%;
+}
+body .content .user-gestion-relative .received-message .card-message p {
+  text-align: center;
+  font-size: 28px;
+  font-family: "arial", sans-serif;
+  color: black;
+  width: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  margin: auto;
+  background-color: whitesmoke;
+}
+body .content .user-gestion-relative .received-message .card-message .card-message-buttons {
+  margin: 5% auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+body .content .user-gestion-relative .received-message .card-message .card-message-buttons ul {
+  list-style: none;
+  font-size: 32px;
+  font-family: "Tilt Neon", cursive;
+}
 body .content .button-return {
   background-image: none;
   border: none;
   position: absolute;
-  top: 230px;
+  top: 10%;
+  cursor: pointer;
+  left: 100px;
+  border-radius: 90%;
+}
+body .content .button-return-two {
+  background-image: none;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  top: 3%;
   left: 100px;
   border-radius: 90%;
 }
@@ -11938,6 +12047,32 @@ article .descri ul {
   transition: all 0.5s ease-in-out;
 }
 
+.button-custom-delete {
+  border: 1px solid black;
+  border-radius: 90%;
+  width: 100px;
+  height: 100px;
+  background-color: #f64b4b;
+  transition: all 0.5s ease-in-out;
+}
+.button-custom-delete:hover {
+  color: #606060;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.5s ease-in-out;
+}
+.button-custom-delete img {
+  width: 110px;
+  height: 110px;
+  transition: all 0.5s ease-in-out;
+}
+.button-custom-delete img:hover {
+  color: #606060;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.5s ease-in-out;
+}
+
 #horiz-line {
   height: 2px;
   width: 80%;
@@ -11957,6 +12092,7 @@ article .descri ul {
   bottom: 0;
   opacity: 0.6;
   background-color: #F6F2F0;
+  pointer-events: none;
 }
 
 .background-image-two {
@@ -12118,6 +12254,34 @@ article .descri ul {
   color: #c8eaf8;
   text-decoration: 2px solid #c8eaf8 underline;
   text-underline-offset: 10px;
+}
+
+.success-custom {
+  position: fixed;
+  color: black;
+  bottom: 12vh;
+  right: 100px;
+  background: red;
+  padding: 15px;
+  border-radius: 5px 5px 5px 5px;
+  z-index: 1400;
+  font-size: 2.8em;
+  text-align: center;
+  font-family: "Tilt Neon", cursive;
+  opacity: 1; /* la propriété opacity est initialisée à 1 */
+  transition: opacity 2s ease-in-out; /* ajoute une transition d'animation de 2 secondes à l'opacité */
+}
+.success-custom.fadeout { /* lorsque la classe fadeout est ajoutée */
+  opacity: 0; /* la propriété opacity est réinitialisée à 0 */
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

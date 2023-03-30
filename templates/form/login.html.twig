@@ -6,11 +6,17 @@
     {% include'fixed/nav_two.html.twig' %}
     <div class="background-image-two"></div>
     <div class="content">
+
         <div class="form-two">
             <div class="custom-title-one custom-title-one-form">
                 <h3>Connexion</h3>
                 <img src="{{ asset('picture//title/title-feather.png') }}" alt="" class="title-h3">
             </div>
+            <a href="{{ path('app_home') }}">
+                <button type="button" class="button-return">
+                    <img src="{{ asset('picture/icones/arrow_back.png') }}" alt="">
+                </button>
+            </a>
             <form action="{{ path('app_login') }}" method="post">
                 <div class="form-row">
                     <label for="username">Email:</label>

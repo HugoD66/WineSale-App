@@ -23,17 +23,26 @@ security:
             logout:
                 path: app_logout
                 target: app_home
+            login_throttling:
+                max_attempts: 8
+                interval: '15 minutes'
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
-
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/utilisateur, roles: ROLE_USER }
+         - { path: ^/changer-photo, roles: ROLE_USER }
+         - { path: ^/changer-mot-de-passe, roles: ROLE_USER }
+         - { path: ^/changer-photo, roles: ROLE_USER }
+         - { path: ^/ajout-vin, roles: ROLE_ADMIN }
+         - { path: ^//update-wine/, roles: ROLE_ADMIN }
 
 when@test:
     security:

@@ -79,6 +79,7 @@ body {
             display: inline-block;
             a {
                 text-decoration: none;
+                padding: 20px;
                 color: $white3;
                 font-family: $nav;
                 font-size: 40px;
@@ -90,6 +91,9 @@ body {
                     text-underline-offset: 2vh;
                     cursor: pointer;
                     transition: all 0.5s ease-in-out;
+                }
+                &:active {
+                    color: black;
                 }
             }
         }
@@ -585,7 +589,6 @@ body {
                     bottom: 150px;
                     height: auto;
                     overflow-y: auto;
-
                     .wine-unit {
                         border-radius: 15px;
                         margin: auto;
@@ -631,6 +634,9 @@ body {
             width: 100%;
             min-height: 85vh;
             background-color: #93c5fd;
+            position: relative;
+            opacity: 1;
+            z-index: 2;
             .wine-by-id-unit {
                 display: flex;
                 flex-direction: column;
@@ -706,7 +712,7 @@ body {
             background-position: center;
             background-repeat: no-repeat;
             position: fixed;
-            height: 1200px;
+            height: auto;
             z-index: 3;
             h4 {
                 font-size: 45px;
@@ -795,26 +801,127 @@ body {
                 margin: auto;
                 width: 75px;
             }
+            h4 {
+                font-family: $cursiveTitle;
+                font-size: 40px;
+            }
             .user-button-list {
                 width: 100%;
-                margin: auto;
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
                 flex-direction: row;
+                margin: 4% auto;
                 button {
                     width: 25vw;
                     font-size: 35px;
                     margin-bottom: 5%;
                 }
             }
-
+            .wine-list {
+                margin-top: 50px;
+                width: 95%;
+                display: flex; /* Pour aligner les blocs horizontalement */
+                flex-wrap: nowrap; /* Empêcher les blocs de retourner à la ligne */
+                overflow-x: auto; /* Ajouter une barre de défilement en cas de dépassement */
+                white-space: nowrap; /* Empêcher les blocs enfants de revenir à la ligne */
+                margin-bottom: 12vh;
+                .wine-list-unit {
+                    position: relative; /* Ajouter position relative au conteneur parent */
+                    height: auto;
+                    margin: 1%;
+                    border-radius: 10px;
+                    border: 1px solid $blue2;
+                    min-width: 500px;
+                    background-color: $white1;
+                    h5 {
+                        font-size: 40px;
+                        color: $white5;
+                        font-family: $cursiveTitle;
+                        text-align: center;
+                    }
+                    .wine-unit-desc {
+                        margin-top: 25px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        flex-direction: row;
+                        ul {
+                            list-style: none;
+                            font-size: 32px;
+                            font-family: $cursiveTitle;
+                        }
+                        .button-list {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;
+                            margin: auto;
+                            button {
+                                margin: 3%;
+                            }
+                        }
+                    }
+                }
+            }
+            .received-message {
+                width: 96%;
+                border: 1px solid black;
+                border-radius: 15px;
+                margin-bottom: 30px;
+                .card-message {
+                    width: 100%;
+                    border: 1px solid gray;
+                    background-color: transparent;
+                    h5 {
+                        font-size: 38px;
+                        margin-top: 50px;
+                        margin-left: 50px;
+                        font-family: $cursiveTitle;
+                        color: $blue4;
+                        margin-bottom: 2%;
+                    }
+                    p {
+                        text-align: center;
+                        font-size: 28px;
+                        font-family: $nav;
+                        color: black;
+                        width: 80%;
+                        padding: 20px;
+                        border-radius: 20px;
+                        margin: auto;
+                        background-color: $white1;
+                    }
+                    .card-message-buttons {
+                        margin: 5% auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        flex-direction: row;
+                        ul {
+                            list-style: none;
+                            font-size: 32px;
+                            font-family: $cursiveTitle;
+                        }
+                    }
+                }
+            }
         }
         .button-return {
             background-image: none;
             border: none;
             position: absolute;
-            top: 230px;
+            top: 10%;
+            cursor: pointer;
+            left: 100px;
+            border-radius: 90%;
+        }
+        .button-return-two {
+            background-image: none;
+            border: none;
+            position: absolute;
+            cursor: pointer;
+            top: 3%;
             left: 100px;
             border-radius: 90%;
         }
@@ -1190,7 +1297,31 @@ article {
     }
 
 }
-
+.button-custom-delete {
+    border: 1px solid black;
+    border-radius: 90%;
+    width: 100px;
+    height: 100px;
+    background-color: #f64b4b;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+        color: $white4;
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: all 0.5s ease-in-out;
+    }
+    img {
+        width: 110px;
+        height: 110px;
+        transition: all 0.5s ease-in-out;
+        &:hover {
+            color: $white4;
+            cursor: pointer;
+            transform: scale(1.2);
+            transition: all 0.5s ease-in-out;
+        }
+    }
+}
 //Barre horizontale
 #horiz-line{
     height: 2px;
@@ -1210,6 +1341,7 @@ article {
     bottom: 0;
     opacity: 0.6;
     background-color: #F6F2F0;
+    pointer-events: none;
 }
 .background-image-two {
     background-image: url("../../public/picture/back-form-three.png");
@@ -1376,4 +1508,31 @@ article {
         text-decoration: 2px solid $blue1 underline;
         text-underline-offset: 10px;
     }
+}
+
+
+
+
+
+.success-custom {
+    position: fixed;
+    color: black;
+    bottom: 12vh;
+    right: 100px;
+    background: red;
+    padding: 15px;
+    border-radius: 5px 5px 5px 5px;
+    z-index: 1400;
+    font-size: 2.8em;
+    text-align: center;
+    font-family: $cursiveTitle;
+    opacity: 1; /* la propriété opacity est initialisée à 1 */
+    transition: opacity 2s ease-in-out; /* ajoute une transition d'animation de 2 secondes à l'opacité */
+    &.fadeout { /* lorsque la classe fadeout est ajoutée */
+        opacity: 0; /* la propriété opacity est réinitialisée à 0 */
+    }
+}
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }

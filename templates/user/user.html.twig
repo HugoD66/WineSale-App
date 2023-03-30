@@ -37,16 +37,76 @@
                 <button type="button" class="button-custom-three"><a href="{{ path('app_change_password', { 'id' : user.id}) }}">Changer MDP</a></button>
                 <button type="button" class="button-custom-three"><a href="{{ path('app_change_picture', { 'id' : user.id}) }}">Changer Photo </a></button>
             </div>
-            <div class="user-list-commandes">
-{# {% if user.commande %} #}
-                <h4>Vos commandes : </h4>
-                <br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br>s
-                <br><br><br><br><br><br><br>
-            </div>
+            {% if app.user %}
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <h4>Messages Reçus : </h4>
+                    <div class="received-message">
+                    {% for message in messages %}
+                        <div class="card-message">
+                            <h5>{{ message.title }}</h5>
+                            <p>{{ message.content }}</p>
+                            <div class="card-message-buttons">
+                                <ul>
+                                    <li>{{ message.email }}</li>
+                                    <li>{{ message.sentAt|date("m/d/Y") }}</li>
+                                </ul>
+                                <button type="button" class="button-custom-delete">
+                                    <a href="{{ path('delete_form', { 'id' : message.id}) }}">
+                                        <img src="{{ asset('picture/icones/delete.svg') }}" alt="Representation bouton supprimer message.">
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <h4>Gestion des vins : </h4>
+                    <button type="button" class="button-custom-three"><a href="{{ path('app_add_wine') }}">Ajouter Vin + </a></button>
+                    <div class="wine-list">
+                    {% for wine in wines %}
+                        <div class="wine-list-unit">
+                                <h5>{{ wine.title }}</h5>
+                            <div class="wine-unit-desc">
+                                <ul>
+                                    <li>Prix : {{ wine.price }}</li>
+                                    <li>Année : {{ wine.year }}</li>
+                                </ul>
+                                <div class="button-list">
+                                    <button type="button" class="button-custom-three"><a href="{{ path('app_update_wine', { 'id' : wine.id}) }}">Modifier</a></button>
+                                    <button type="button" class="button-custom-three"><a href="{{ path('delete_wine', { 'id' : wine.id}) }}">Supprimer</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+
+                {% elseif  'ROLE_USER' in app.user.roles %}
+                    <div class="user-list-commandes">
+    {# {% if user.commande %} #}
+                        <h4>Vos commandes : </h4>
+                        <br><br><br><br><br><br><br>
+                        <br><br><br><br><br><br><br>
+                        <br><br><br><br><br><br><br>
+                        <br><br><br><br><br><br><br>
+                        <br><br><br><br><br><br><br>
+                    </div>
+                {% endif %}
+            {% else %}
+            {% endif %}
         </div>
         {% include'fixed/footer_two.html.twig' %}
+        <div id="success-message-async"></div>
+        {% for message in app.flashes('success') %}
+            <div class="success-custom">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <script>
+            setTimeout(function() {
+                const successCustom = document.querySelector('.success-custom');
+                if (successCustom !== null) {
+                    successCustom.classList.add('fadeout');
+                }
+            }, 1500);
+        </script>
     </div>
 {% endblock %}
