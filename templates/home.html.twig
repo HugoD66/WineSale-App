@@ -2,7 +2,6 @@
 {% block title %}{{ title }}{% endblock %}
 {% block body %}
     {% include 'fixed/nav.html.twig' %}
-
     <div id="success-message-async"></div>
     {% for message in app.flashes('success') %}
         <div class="success-custom">
@@ -126,7 +125,9 @@
                         <div class="carousel-inner">
                             {% for wine in wines %}
                             <div class="carousel-item {% if loop.first %} active {% endif %}">
-                                <img class="d-block w-100" src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="First slide">
+                                <a href="{{ path('app_wine', { 'id' : wine.id}) }}">
+                                    <img class="d-block w-100" src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="First slide">
+                                </a>
                                     <h5>{{ wine.title }}</h5>
                                 <div class="descri">
                                     <ul>
@@ -184,10 +185,12 @@
                             <div class="carousel-inner">
                                 {% for wine in wines %}
                                     <div class="carousel-item {% if loop.first %} active {% endif %}">
+                                        <a href="{{ path('app_wine', { 'id' : wine.id}) }}">
                                         <img class="d-block w-100" src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="First slide">
+                                        </a>
                                         <h5>{{ wine.title }}</h5>
                                         <div class="descri">
-                                            <ul>s
+                                            <ul>
                                                 <li>Prix: {{ wine.price }}$</li>
                                                 <li>Année: {{ wine.year }}.</li>
                                             </ul>
@@ -218,7 +221,7 @@
                 <h3>Nous contacter</h3>
                 <img src="{{ asset('picture/title/title-feather.png') }}" alt="" class="title-h3">
             </div>
-            <div class="aside-responsive">
+            <div class="aside-responsive-one">
                 <div class="form">
                     {{ form_start(form) }}
                     {{ form_errors(form) }}
@@ -238,6 +241,8 @@
                         <img src="{{ asset('picture/icones/tel.png') }}" alt="">
                     </a>
                 </div>
+            </div>
+            <div class="aside-responsive-two">
                 <div class="informations">
                     <div class="contact-inform">
                         <ul>
@@ -246,17 +251,17 @@
                             <li>France</li>
                         </ul>
                     </div>
-                    <div class="contact">
-                        <a href="https://www.linkedin.com/in/hugo-dessauw-07a901250/">
-                            <img src="{{ asset('picture/icones/linkedin.png') }}" alt="">
-                        </a>
-                        <a href="https://github.com/HugoD66">
-                            <img src="{{ asset('picture/icones/github.gif') }}" alt="">
-                        </a>
-                        <a href="https://www.facebook.com/hugo.dessauw">
-                            <img src="{{ asset('picture/icones/facebook.png') }}" alt="">
-                        </a>
-                    </div>
+                </div>
+                <div class="contact">
+                    <a href="https://www.linkedin.com/in/hugo-dessauw-07a901250/">
+                        <img src="{{ asset('picture/icones/linkedin.png') }}" alt="">
+                    </a>
+                    <a href="https://github.com/HugoD66">
+                        <img src="{{ asset('picture/icones/github.gif') }}" alt="">
+                    </a>
+                    <a href="https://www.facebook.com/hugo.dessauw">
+                        <img src="{{ asset('picture/icones/facebook.png') }}" alt="">
+                    </a>
                 </div>
             </div>
         </aside>

@@ -24,6 +24,7 @@ class ChangePasswordType extends AbstractType
                 'attr' => [
                     'autocomplete' => 'new-password',
                     'class' => 'password-custom',
+                    'placeholder' => 'Nouveau mot de passe ...'
                 ],
                 'constraints' => [
                     new NotBlank([

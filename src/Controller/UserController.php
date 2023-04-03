@@ -54,6 +54,7 @@ class UserController extends AbstractController
             'form'          => $form->createView(),
             'messages'      => $messages,
             'wines'         => $wines,
+            'title'         => 'Win\'Export - Gestion comptes'
         ]);
     }
 

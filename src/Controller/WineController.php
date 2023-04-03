@@ -32,7 +32,6 @@ class WineController extends AbstractController
                            EntityManagerInterface $entityManager,
                            int $id): Response
     {
-
         $wine = $doctrine->getRepository(Wine::class)->find($id);
         $notes = $wine->getNote();
 
@@ -51,12 +50,13 @@ class WineController extends AbstractController
                 $entityManager->persist($note);
                 $entityManager->flush();
             }
+            $this->addFlash('success', 'Note envoyée.');
         }
-
         return $this->render('wine/unit-wine.html.twig', [
             'wine' => $wine,
             'form' => $form->createView(),
             'notes' => $notes,
+            'title' => 'Win\'Export - ' . $wine->getTitle(),
         ]);
     }
 }

@@ -10851,6 +10851,11 @@ body .nav-two .nav-item-list, body .nav-three .nav-item-list {
   right: 0;
   display: inline-block;
 }
+@media (min-width: 1350px) {
+  body .nav-two .nav-item-list, body .nav-three .nav-item-list {
+    width: 25%;
+  }
+}
 body .nav-two .nav-item-list a, body .nav-three .nav-item-list a {
   text-decoration: none;
   padding: 20px;
@@ -10859,6 +10864,11 @@ body .nav-two .nav-item-list a, body .nav-three .nav-item-list a {
   font-size: 40px;
   margin-right: 3%;
   transition: all 0.5s ease-in-out;
+}
+@media (min-width: 1350px) {
+  body .nav-two .nav-item-list a, body .nav-three .nav-item-list a {
+    font-size: 30px;
+  }
 }
 body .nav-two .nav-item-list a:hover, body .nav-three .nav-item-list a:hover {
   text-decoration: 1px solid underline #70b7c9;
@@ -10927,7 +10937,7 @@ body .content .header-desktop {
   background-size: 60vw;
   background-position: center right;
   background-repeat: no-repeat;
-  width: 98%;
+  width: 100%;
   height: 800px;
   position: fixed;
   margin-top: 2vh;
@@ -11036,13 +11046,13 @@ body .content section .section-desktop .propos-desc {
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  width: 100%;
+  width: 86%;
   margin: auto;
 }
 body .content section .section-desktop .propos-desc img {
   box-shadow: 2px 2px 10px 1px #000000;
   border-radius: 8%;
-  width: 35vw;
+  width: 30vw;
   margin-bottom: 5%;
   margin-left: 7%;
 }
@@ -11056,7 +11066,7 @@ body .content section .section-desktop .propos-desc .propos-explain {
 }
 body .content section .section-desktop .propos-desc .propos-explain p {
   width: 60%;
-  font-size: 25px;
+  font-size: 20px;
   color: #151515;
   font-family: "Source Sans Pro", sans-serif;
   text-align: justify;
@@ -11070,11 +11080,14 @@ body .content section .section-desktop .propos-desc .propos-explain button {
   border: none;
 }
 body .content section .section-desktop .propos-desc .propos-explain button a {
-  font-size: 4em;
+  font-size: 3em;
   font-family: "Lato", sans-serif;
   color: #112a36;
 }
 body .content article {
+  left: 0;
+  right: 0;
+  height: auto;
   position: relative;
   background-color: #eeeed3;
   width: 100%;
@@ -11116,19 +11129,47 @@ body .content article .article-mobile .carousel-mobile h5, body .content article
   font-size: 50px;
   background-color: rgba(231, 231, 231, 0.46);
 }
-body .content article .article-desktop {
-  width: 100%;
-  margin: auto;
-}
 body .content article .article-desktop .article-mediaquery {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
   flex-direction: row;
+  width: 86%;
+  margin: auto;
+}
+body .content article .article-desktop .article-mediaquery .list-wines {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  height: auto;
+  width: 70%;
+}
+body .content article .article-desktop .article-mediaquery .list-wines p {
+  width: 60%;
+  font-size: 25px;
+  color: #151515;
+  font-family: "Source Sans Pro", sans-serif;
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 5%;
+}
+body .content article .article-desktop .article-mediaquery .list-wines button {
+  margin: 12%;
+  min-height: 70px;
+  min-width: 45%;
+  border: none;
+}
+body .content article .article-desktop .article-mediaquery .list-wines button a {
+  font-size: 3em;
+  font-family: "Lato", sans-serif;
+  color: #112a36;
 }
 body .content article .article-desktop .article-mediaquery .carousel-desktop {
   box-shadow: 2px 2px 10px 1px #000000;
-  width: 30%;
+  width: 40vw;
+  margin-bottom: 7%;
+  margin-right: 10%;
 }
 body .content article .article-desktop .article-mediaquery .carousel-desktop .carousel-inner .carousel-item h5, body .content article .article-desktop .article-mediaquery .carousel-desktop .carousel-inner .carousel-item .h5 {
   border-radius: 5px;
@@ -11150,37 +11191,70 @@ body .content aside {
   width: 100%;
   min-height: 90vh;
   z-index: 4;
+  height: auto;
   position: absolute;
   background-color: #bde7cb;
 }
-body .content aside .form {
+@media (min-width: 1100px) {
+  body .content aside {
+    background-size: 20%;
+  }
+}
+body .content aside .aside-responsive-one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one {
+    flex-direction: row;
+  }
+}
+body .content aside .aside-responsive-one .form {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
-body .content aside .form form {
+body .content aside .aside-responsive-one .form form {
   position: relative;
   min-height: 30vh;
   width: 70%;
 }
-body .content aside .form form .form-responsive {
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one .form form {
+    width: 35vw;
+  }
+}
+body .content aside .aside-responsive-one .form form .form-responsive {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
 }
-body .content aside .form form input {
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one .form form .form-responsive {
+    flex-direction: column;
+  }
+}
+body .content aside .aside-responsive-one .form form input {
   margin-top: 5%;
   width: 30vw;
   font-size: 35px;
   border: 1px solid #71c293;
   border-radius: 10px;
 }
-body .content aside .form form label {
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one .form form input {
+    font-size: 20px;
+    width: 25vw;
+  }
+}
+body .content aside .aside-responsive-one .form form label {
   display: none;
 }
-body .content aside .form form textarea {
+body .content aside .aside-responsive-one .form form textarea {
   margin-top: 5%;
   margin-bottom: 2%;
   width: 100%;
@@ -11189,13 +11263,18 @@ body .content aside .form form textarea {
   border: 1px solid #71c293;
   border-radius: 10px;
 }
-body .content aside .form form #contact_us_submit {
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one .form form textarea {
+    font-size: 20px;
+  }
+}
+body .content aside .aside-responsive-one .form form #contact_us_submit {
   position: absolute;
   right: 0;
   border-radius: 90%;
-  height: 100px;
-  width: 100px;
-  top: 200px;
+  height: 80px;
+  width: 80px;
+  top: 180px;
   transform: translate(50px, 50px);
   background-image: url("../../public/picture/icones/arrow2.png");
   background-size: 60%;
@@ -11204,27 +11283,58 @@ body .content aside .form form #contact_us_submit {
   background-attachment: fixed;
   border: 1px solid #71c293;
 }
-body .content aside .images {
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one .form form #contact_us_submit {
+    height: 60px;
+    width: 60px;
+  }
+}
+body .content aside .aside-responsive-one .images {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
+  margin-top: 2%;
 }
-body .content aside .images img {
+@media (min-width: 700px) {
+  body .content aside .aside-responsive-one .images {
+    margin-top: 5%;
+  }
+}
+body .content aside .aside-responsive-one .images img {
   padding: 15px;
   background-color: #bde7cb;
   width: 15vw;
   border-radius: 90%;
   transition: all 0.5s ease-in-out;
   border: 1px solid #326242;
+  margin-top: 3%;
 }
-body .content aside .images img:hover {
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-one .images img {
+    width: 8vw;
+  }
+}
+body .content aside .aside-responsive-one .images img:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.5s ease-in-out;
 }
-body .content aside .informations {
+body .content aside .aside-responsive-two {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-two {
+    flex-direction: row-reverse;
+    margin-bottom: 200px;
+  }
+}
+body .content aside .aside-responsive-two .informations {
   display: flex;
   align-items: start;
   justify-content: center;
@@ -11232,13 +11342,13 @@ body .content aside .informations {
   width: 100%;
   margin: auto;
 }
-body .content aside .informations .contact-inform {
+body .content aside .aside-responsive-two .informations .contact-inform {
   width: auto;
   background-color: #bde7cb;
   border-radius: 15px;
   margin: 5% auto auto;
 }
-body .content aside .informations .contact-inform ul {
+body .content aside .aside-responsive-two .informations .contact-inform ul {
   list-style: none;
   margin: auto;
   text-align: center;
@@ -11246,16 +11356,20 @@ body .content aside .informations .contact-inform ul {
   line-height: 1.5em;
   font-family: "Source Sans Pro", sans-serif;
 }
-body .content aside .informations .contact {
-  position: absolute;
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-two .informations .contact-inform ul {
+    font-size: 30px;
+  }
+}
+body .content aside .aside-responsive-two .contact {
   display: flex;
   align-items: start;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
-  bottom: 15vh;
+  margin-top: 8%;
 }
-body .content aside .informations .contact img {
+body .content aside .aside-responsive-two .contact img {
   padding: 10px;
   background-color: white;
   width: 12vw;
@@ -11265,7 +11379,7 @@ body .content aside .informations .contact img {
   filter: blur(0);
   box-shadow: 0px -15px 40px rgba(159, 162, 177, 0.8);
 }
-body .content aside .informations .contact img:hover {
+body .content aside .aside-responsive-two .contact img:hover {
   transform: scale(1.1);
   cursor: pointer;
   -webkit-filter: blur(4px);
@@ -11273,14 +11387,17 @@ body .content aside .informations .contact img:hover {
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
+@media (min-width: 1100px) {
+  body .content aside .aside-responsive-two .contact img {
+    width: 5vw;
+  }
+}
 body .content footer {
   z-index: 5;
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
-  max-height: 120px;
-  height: 10vh;
   width: 100%;
   display: none;
   box-shadow: 0px -15px 40px rgba(159, 162, 177, 0.8);
@@ -11288,22 +11405,26 @@ body .content footer {
   padding: 0 20px;
 }
 body .content footer .footer-responsive {
-  margin-top: 2%;
+  margin: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
+  height: content-box;
   width: 100%;
 }
 body .content footer .footer-responsive h6, body .content footer .footer-responsive .h6 {
   font-family: "Oregano", cursive;
   color: #114056;
   font-size: 50px;
+  pointer-events: none;
 }
 body .content footer .footer-responsive .img-panier, body .content footer .footer-responsive .img-arrow {
   padding: 8px;
   background-color: #71c293;
-  width: 8vw;
+  max-height: 100px;
   border-radius: 90%;
   box-shadow: 0px -15px 40px rgba(159, 162, 177, 0.8);
   transition: all 0.5s ease-in-out;
@@ -11357,10 +11478,24 @@ body .content .list-wine .panel .panel-wine {
   height: auto;
   overflow-y: auto;
 }
+@media (min-width: 1100px) {
+  body .content .list-wine .panel .panel-wine {
+    top: 150px;
+    width: 90%;
+    bottom: 80px;
+  }
+}
 body .content .list-wine .panel .panel-wine .wine-unit {
   border-radius: 15px;
   margin: auto;
   width: 100%;
+}
+@media (min-width: 1500px) {
+  body .content .list-wine .panel .panel-wine .wine-unit {
+    width: 49.5%;
+    margin: auto;
+    display: inline-block;
+  }
 }
 body .content .list-wine .panel .panel-wine .wine-unit h2, body .content .list-wine .panel .panel-wine .wine-unit .h2 {
   color: #114056;
@@ -11369,6 +11504,11 @@ body .content .list-wine .panel .panel-wine .wine-unit h2, body .content .list-w
   margin: 3%;
   text-align: center;
 }
+@media (min-width: 1200px) {
+  body .content .list-wine .panel .panel-wine .wine-unit h2, body .content .list-wine .panel .panel-wine .wine-unit .h2 {
+    font-size: 40px;
+  }
+}
 body .content .list-wine .panel .panel-wine .wine-unit p {
   width: 80%;
   text-align: center;
@@ -11376,6 +11516,11 @@ body .content .list-wine .panel .panel-wine .wine-unit p {
   padding: 15px;
   margin: auto;
   font-family: "Lato", sans-serif;
+}
+@media (min-width: 1200px) {
+  body .content .list-wine .panel .panel-wine .wine-unit p {
+    font-size: 22px;
+  }
 }
 body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list {
   display: flex;
@@ -11395,10 +11540,14 @@ body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list ul {
   font-family: "Lato", sans-serif;
   line-height: 2.2em;
 }
+@media (min-width: 1200px) {
+  body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list ul {
+    font-size: 24px;
+  }
+}
 body .content .wine-by-id {
   width: 100%;
   min-height: 85vh;
-  background-color: #93c5fd;
   position: relative;
   opacity: 1;
   z-index: 2;
@@ -11410,21 +11559,20 @@ body .content .wine-by-id .wine-by-id-unit {
   justify-content: center;
   width: 100%;
 }
+@media (min-width: 1200px) {
+  body .content .wine-by-id .wine-by-id-unit {
+    flex-direction: row;
+  }
+}
 body .content .wine-by-id .wine-by-id-unit img {
-  width: 90%;
+  width: 70%;
   margin: auto;
   border-radius: 10px;
 }
-body .content .wine-by-id .wine-by-id-unit h4, body .content .wine-by-id .wine-by-id-unit .h4 {
-  position: absolute;
-  border-radius: 10px;
-  font-family: "Lato", sans-serif;
-  top: 350px;
-  margin: auto;
-  left: 50px;
-  transform: translate(50px, 50px);
-  font-size: 60px;
-  background-color: rgba(231, 231, 231, 0.46);
+@media (min-width: 1200px) {
+  body .content .wine-by-id .wine-by-id-unit img {
+    width: 30%;
+  }
 }
 body .content .wine-by-id .wine-by-id-unit .wine-button-year {
   display: flex;
@@ -11432,6 +11580,14 @@ body .content .wine-by-id .wine-by-id-unit .wine-button-year {
   justify-content: space-around;
   flex-direction: row;
   width: 80%;
+  margin-top: 4%;
+}
+@media (min-width: 1200px) {
+  body .content .wine-by-id .wine-by-id-unit .wine-button-year {
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+  }
 }
 body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc {
   display: flex;
@@ -11444,11 +11600,32 @@ body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc {
   text-wrap: none;
   text-align: center;
 }
+@media (min-width: 1200px) {
+  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc {
+    font-size: 25px;
+    flex-direction: row;
+  }
+}
+body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc u {
+  text-decoration: 1px solid underline #114056;
+  text-underline-offset: 4px;
+}
+@media (min-width: 1200px) {
+  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc u {
+    text-underline-offset: 2px;
+  }
+}
 body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+@media (min-width: 1100px) {
+  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
 body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons button {
   min-width: 10vw;
@@ -11461,13 +11638,77 @@ body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons butto
   font-size: 30px;
   text-wrap: none;
 }
-body .content .wine-by-id .wine-by-id-unit p {
+@media (min-width: 1100px) {
+  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons button a {
+    font-size: 25px;
+  }
+}
+body .content .wine-by-id p {
   width: 60%;
   font-size: 35px;
   color: #151515;
   font-family: "Source Sans Pro", sans-serif;
   text-align: justify;
-  margin: 6%;
+  margin: 4% auto auto;
+}
+@media (min-width: 1100px) {
+  body .content .wine-by-id p {
+    font-size: 23px;
+  }
+}
+body .content .wine-by-id .wine-id-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  flex-direction: column;
+}
+body .content .wine-by-id .wine-id-note .responsive-note {
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  font-size: 30px;
+  margin-top: 5%;
+  margin-bottom: 10vh;
+}
+body .content .wine-by-id .wine-id-note .responsive-note form #note_note {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+}
+body .content .wine-by-id .wine-id-note .responsive-note form #note_submit {
+  width: 80px;
+  height: 80px;
+  background-color: #e0e0e0;
+  background-image: url("../../public/picture/icones/arrow-right.svg");
+  background-size: 60%;
+  border-radius: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  border: 1px solid #606060;
+  transition: all 0.5s ease-in-out;
+}
+body .content .wine-by-id .wine-id-note .responsive-note form #note_submit:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.5s ease-in-out;
+}
+body .content .wine-by-id .wine-id-note .responsive-note .note-moyenne {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "arial", sans-serif;
+  font-size: 35px;
+}
+body .content .wine-by-id .wine-id-note .responsive-note .note-moyenne .your-note, body .content .wine-by-id .wine-id-note .responsive-note .note-moyenne .moyenne {
+  margin-top: 3%;
+  text-align: end;
 }
 body .content .user-gestion {
   width: 100%;
@@ -11480,47 +11721,76 @@ body .content .user-gestion {
   height: auto;
   z-index: 3;
 }
-body .content .user-gestion h4, body .content .user-gestion .h4 {
+body .content .user-gestion .responsive-user-coord {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+@media (min-width: 1300px) {
+  body .content .user-gestion .responsive-user-coord {
+    flex-direction: row;
+    margin: 3% auto;
+  }
+}
+body .content .user-gestion .responsive-user-coord h4, body .content .user-gestion .responsive-user-coord .h4 {
   font-size: 45px;
   margin-top: 50px;
   margin-left: 50px;
   font-family: "Tilt Neon", cursive;
   color: #112a36;
 }
-body .content .user-gestion .picture-user {
+body .content .user-gestion .responsive-user-coord .picture-user {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-body .content .user-gestion .picture-user img {
+body .content .user-gestion .responsive-user-coord .picture-user img {
   width: 50vw;
   height: auto;
   margin: 5% auto auto;
   border-radius: 90%;
   box-shadow: 0 0 15px 5px rgba(112, 183, 201, 0.48);
 }
-body .content .user-gestion ul {
+@media (min-width: 600px) {
+  body .content .user-gestion .responsive-user-coord .picture-user img {
+    width: 300px;
+  }
+}
+@media (min-width: 1000px) {
+  body .content .user-gestion .responsive-user-coord .picture-user img {
+    width: 30vw;
+  }
+}
+@media (min-width: 1300px) {
+  body .content .user-gestion .responsive-user-coord .picture-user img {
+    width: 20vw;
+  }
+}
+body .content .user-gestion .responsive-user-coord ul {
   font-size: 35px;
   text-align: center;
   list-style: none;
   font-family: "Tilt Neon", cursive;
   color: #112a36;
 }
-body .content .user-gestion ul u {
+body .content .user-gestion .responsive-user-coord ul u {
   text-decoration: 2px solid #204c60 underline;
   text-underline-offset: 3px;
 }
-body .content .user-gestion .form-picture-user {
+body .content .user-gestion .responsive-user-coord .form-picture-user {
   margin-bottom: 0;
 }
-body .content .user-gestion .form-picture-user form {
+body .content .user-gestion .responsive-user-coord .form-picture-user form {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
 }
-body .content .user-gestion .form-picture-user form input {
+body .content .user-gestion .responsive-user-coord .form-picture-user form input {
   background-color: #fff;
   border: 3px solid #000;
   color: #000;
@@ -11529,7 +11799,7 @@ body .content .user-gestion .form-picture-user form input {
   font-size: 22px;
   font-weight: bold;
 }
-body .content .user-gestion .form-picture-user form .button-custom-button-pic {
+body .content .user-gestion .responsive-user-coord .form-picture-user form .button-custom-button-pic {
   background-color: transparent;
   color: white;
   border: none;
@@ -11543,7 +11813,7 @@ body .content .user-gestion .form-picture-user form .button-custom-button-pic {
   background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
 }
-body .content .user-gestion .form-picture-user form .button-custom-button-pic:hover {
+body .content .user-gestion .responsive-user-coord .form-picture-user form .button-custom-button-pic:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.5s ease-in-out;
@@ -11556,11 +11826,16 @@ body .content .user-gestion-relative {
   right: 0;
   width: 100%;
   height: auto;
-  top: 70vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
+  top: 70vh;
+}
+@media (min-width: 750px) {
+  body .content .user-gestion-relative {
+    top: 80vh;
+  }
 }
 body .content .user-gestion-relative img {
   margin: auto;
@@ -11635,9 +11910,26 @@ body .content .user-gestion-relative .received-message {
   border-radius: 15px;
   margin-bottom: 30px;
 }
+@media (min-width: 1000px) {
+  body .content .user-gestion-relative .received-message {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media (min-width: 1250px) {
+  body .content .user-gestion-relative .received-message {
+    width: 70%;
+    margin: auto;
+  }
+}
+@media (min-width: 1500px) {
+  body .content .user-gestion-relative .received-message {
+    width: 60%;
+    margin: auto;
+  }
+}
 body .content .user-gestion-relative .received-message .card-message {
   width: 100%;
-  border: 1px solid gray;
   background-color: transparent;
 }
 body .content .user-gestion-relative .received-message .card-message h5, body .content .user-gestion-relative .received-message .card-message .h5 {
@@ -11659,6 +11951,11 @@ body .content .user-gestion-relative .received-message .card-message p {
   margin: auto;
   background-color: whitesmoke;
 }
+@media (min-width: 1250px) {
+  body .content .user-gestion-relative .received-message .card-message p {
+    font-size: 23px;
+  }
+}
 body .content .user-gestion-relative .received-message .card-message .card-message-buttons {
   margin: 5% auto;
   display: flex;
@@ -11670,6 +11967,11 @@ body .content .user-gestion-relative .received-message .card-message .card-messa
   list-style: none;
   font-size: 32px;
   font-family: "Tilt Neon", cursive;
+}
+@media (min-width: 1250px) {
+  body .content .user-gestion-relative .received-message .card-message .card-message-buttons ul {
+    font-size: 20px;
+  }
 }
 body .content .button-return {
   background-image: none;
@@ -11717,6 +12019,13 @@ body .content .button-return-two {
     visibility: hidden;
     display: none;
   }
+  .wine-id-mobile {
+    visibility: visible;
+  }
+  .wine-id-desktop {
+    visibility: hidden;
+    display: none;
+  }
   section {
     margin: 1200px auto auto;
   }
@@ -11746,6 +12055,13 @@ body .content .button-return-two {
     display: none;
   }
   .article-desktop {
+    visibility: visible;
+  }
+  .wine-id-mobile {
+    visibility: hidden;
+    display: none;
+  }
+  .wine-id-desktop {
     visibility: visible;
   }
   section {
@@ -11887,13 +12203,15 @@ article .descri ul {
   box-shadow: 0px -15px 40px rgba(159, 162, 177, 0.8);
   background-color: whitesmoke;
   padding: 0 20px;
-  margin-top: 2%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
 }
-.footer-two h6, .footer-two .h6 {
+.footer-two a {
+  text-decoration: none;
+}
+.footer-two a h6, .footer-two a .h6 {
   font-family: "Oregano", cursive;
   color: #114056;
   font-size: 50px;
@@ -11901,7 +12219,6 @@ article .descri ul {
 .footer-two .img-panier, .footer-two .img-arrow {
   padding: 8px;
   background-color: #71c293;
-  width: 8vw;
   border-radius: 90%;
   box-shadow: 0px -15px 40px rgba(159, 162, 177, 0.8);
   transition: all 0.5s ease-in-out;
@@ -11995,6 +12312,12 @@ article .descri ul {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+@media (min-width: 1100px) {
+  .button-custom-two {
+    font-size: 30px;
+    padding: 0 15px;
+  }
+}
 .button-custom-two:after {
   background-color: #111;
   border-radius: 8px;
@@ -12035,10 +12358,16 @@ article .descri ul {
 }
 .button-custom-three a {
   text-decoration: none;
+  margin: auto;
   font-size: 32px;
   font-family: "Tilt Neon", cursive;
   color: #efefe2;
   transition: all 0.5s ease-in-out;
+}
+@media (min-width: 1100px) {
+  .button-custom-three a {
+    font-size: 26px;
+  }
 }
 .button-custom-three a:hover {
   color: #606060;
@@ -12055,16 +12384,32 @@ article .descri ul {
   background-color: #f64b4b;
   transition: all 0.5s ease-in-out;
 }
+@media (min-width: 1250px) {
+  .button-custom-delete {
+    width: 70px;
+    height: 70px;
+  }
+}
 .button-custom-delete:hover {
   color: #606060;
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.5s ease-in-out;
 }
+.button-custom-delete a {
+  margin: auto;
+}
 .button-custom-delete img {
-  width: 110px;
-  height: 110px;
+  width: 80px;
+  margin: auto;
+  height: 80px;
   transition: all 0.5s ease-in-out;
+}
+@media (min-width: 1250px) {
+  .button-custom-delete img {
+    width: 50px;
+    height: 50px;
+  }
 }
 .button-custom-delete img:hover {
   color: #606060;
@@ -12085,14 +12430,23 @@ article .descri ul {
   background-position: center bottom 25%;
   background-size: 70%;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   overflow: hidden;
   bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
   opacity: 0.6;
   background-color: #F6F2F0;
   pointer-events: none;
+}
+@media (min-width: 1100px) {
+  .background-image-one {
+    background-size: 30%;
+    background-position: center left 25%;
+  }
 }
 
 .background-image-two {
@@ -12100,21 +12454,29 @@ article .descri ul {
   background-position: center bottom 25%;
   background-size: 70%;
   background-repeat: no-repeat;
-  position: absolute;
   width: 100%;
   height: 100%;
+  position: fixed;
   overflow: hidden;
   bottom: 0;
   top: 0;
+  right: 0;
+  left: 0;
   opacity: 0.6;
   background-color: #EDE7E1;
+}
+@media (min-width: 1100px) {
+  .background-image-two {
+    background-size: 30%;
+    background-position: center left 25%;
+  }
 }
 
 .form-one {
   position: relative;
-  margin-top: 8%;
   opacity: 1;
   z-index: 2;
+  margin-bottom: 20%;
 }
 .form-one .picture-custom, .form-one .password-custom {
   margin-top: 7vh;
@@ -12142,11 +12504,21 @@ article .descri ul {
 .form-one div #registration_form_birthday option {
   font-size: 25px;
 }
+@media (min-width: 1100px) {
+  .form-one div #registration_form_birthday {
+    font-size: 22px;
+  }
+}
 .form-one div label {
   font-size: 44px;
   color: #2d2d2d;
   width: 30vw;
   font-family: "Tilt Neon", cursive;
+}
+@media (min-width: 1100px) {
+  .form-one div label {
+    font-size: 30px;
+  }
 }
 .form-one div input {
   width: 30vw;
@@ -12154,6 +12526,11 @@ article .descri ul {
   background-color: #efefe2;
   border: 1px solid #112117;
   font-size: 34px;
+}
+@media (min-width: 1100px) {
+  .form-one div input {
+    font-size: 25px;
+  }
 }
 .form-one div .birthday-custom {
   margin-right: 8%;
@@ -12166,10 +12543,14 @@ article .descri ul {
   border-radius: 5px;
   border: 1px solid #31311a;
 }
+@media (min-width: 1100px) {
+  .form-one div .picture-textarea {
+    font-size: 25px;
+  }
+}
 
 .form-two {
   position: relative;
-  margin-top: 4%;
   opacity: 1;
   z-index: 2;
 }
@@ -12180,11 +12561,21 @@ article .descri ul {
   flex-direction: column;
   margin-top: 10%;
 }
+@media (min-width: 1100px) {
+  .form-two form {
+    margin-top: 4%;
+  }
+}
 .form-two form label {
   font-size: 44px;
   color: #2d2d2d;
   width: 30vw;
   font-family: "Tilt Neon", cursive;
+}
+@media (min-width: 1100px) {
+  .form-two form label {
+    font-size: 28px;
+  }
 }
 .form-two form input {
   width: 30vw;
@@ -12193,8 +12584,18 @@ article .descri ul {
   border: 1px solid #112117;
   font-size: 34px;
 }
+@media (min-width: 1100px) {
+  .form-two form input {
+    font-size: 25px;
+  }
+}
 .form-two form .form-row {
   margin: 4%;
+}
+@media (min-width: 1100px) {
+  .form-two form .form-row {
+    margin: 1%;
+  }
 }
 .form-two .custom-return {
   text-align: center;
@@ -12215,12 +12616,21 @@ article .descri ul {
   background-position: center;
   background-repeat: no-repeat;
   top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
   font-weight: bold;
   color: white;
+  background-color: #0C151E;
+}
+@media (min-width: 1100px) {
+  .redirect {
+    background-size: 30%;
+  }
 }
 .redirect p {
   font-family: "Tilt Neon", cursive;
@@ -12296,6 +12706,23 @@ article .descri ul {
 
 input[type=hidden] {
   display: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 
 /*# sourceMappingURL=app.css.map */

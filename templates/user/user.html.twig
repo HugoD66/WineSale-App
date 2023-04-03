@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}{{title}}{% endblock %}
 
 {% block body %}
     {% include'fixed/nav_three.html.twig' %}
@@ -10,14 +10,14 @@
                 <h3>Bonjour, {{ user.firstname }}</h3>
                 <img src="{{ asset('picture/title/title-user-gestion.png') }}" alt="" class="title-h3">
             </div>
-
+            <div class="responsive-user-coord">
             <ul class="user-coordonnees">
                 <li><u>Email</u> : {{ user.email }}</li>
                 <li><u>Prénom</u> : {{ user.firstname }}</li>
                 <li><u>Nom</u> : {{ user.lastname }}</li>
                 <li><u>Anniversaire</u> : {{ user.birthday|date('d-m-Y H:i:s') }}</li>
             </ul>
-            {% if  user.getPicture %}
+            {% if user.getPicture %}
                 <div class="picture-user">
                     <img id="user-picture" src="{{ asset('picture/recipe-picture/' ~ user.getPicture()) }}" alt="Photo de profil sans enregistrement.">
                 </div>
@@ -30,6 +30,7 @@
                     {{ form_end(form) }}
                 </div>
             {% endif %}
+            </div>
         </div>
         <div class="user-gestion-relative">
             <img src="{{ asset('picture/icones/arrow-bot.svg') }}" alt="">
@@ -57,9 +58,11 @@
                                 </button>
                             </div>
                         </div>
+                        <div id="horiz-line"></div>
+
                     {% endfor %}
                     </div>
-                    <h4>Gestion des vins : </h4>
+                    <h4 style="margin-top: 5%">Gestion des vins : </h4>
                     <button type="button" class="button-custom-three"><a href="{{ path('app_add_wine') }}">Ajouter Vin + </a></button>
                     <div class="wine-list">
                     {% for wine in wines %}

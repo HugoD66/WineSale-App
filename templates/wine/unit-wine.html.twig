@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
 {% include'fixed/nav_two.html.twig' %}
@@ -15,70 +15,121 @@
                     <img src="{{ asset('picture/icones/arrow_back.png') }}" alt="">
                 </a>
             </button>
-            <div class="wine-by-id-unit">
-                <img src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="Photo de la bouteille de vin.">
-                <div class="wine-button-year">
-                    <div class="wine-desc">
-                        <p>Année: <u>{{ wine.year }}</u></p>
-                        <p>Prix: <u>{{ wine.price }}€</u></p>
-                    </div>
-                    <div class="wine-buttons">
-                        <button type="button" class="button-custom-one">
-                            <a href="#">
-                                Achat
-                            </a>
-                        </button>
-                        <button type="button" class="button-custom-one">
-                            <a href="#">
-                                ??????
-                            </a>
-                        </button>
+            <div class="wine-id-mobile">
+                <div class="wine-by-id-unit">
+                    <img src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="Photo de la bouteille de vin.">
+                    <div class="wine-button-year">
+                        <div class="wine-desc">
+                            <p>Année: <u>{{ wine.year }}</u></p>
+                            <p>Prix: <u>{{ wine.price }}€</u></p>
+                        </div>
+                        <div class="wine-buttons">
+                            <button type="button" class="button-custom-one">
+                                <a href="#">
+                                    Achat
+                                </a>
+                            </button>
+                            <button type="button" class="button-custom-one">
+                                <a href="#">
+                                    Panier
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <p>{{ wine.description }}</p>
-
-                <p>NOTE</p>
-
-
-
-
-                {{ form_start(form) }}
-
-                {{ form_widget(form.note) }}
-                {{ form_widget(form.submit) }}
-                {{ form_end(form) }}
-
-                Votre note :
-                {% for star in [1, 2, 3, 4, 5] %}
-                    {% if form.note.vars.value == star %}
-                        <a href="#" class="star active">★</a>
-                    {% else %}
-                        <a href="#" class="star">★</a>
-                    {% endif %}
-                {% endfor %}
-
-
-                Moyenne :
-                {% set totalNotes = notes|length %}
-                {% if totalNotes > 0 %}
-                    {% set sumNotes = 0 %}
-                    {% for note in notes %}
-                        {% set sumNotes = sumNotes + note.note %}
-                    {% endfor %}
-                    {% set average = sumNotes / totalNotes %}
-                    {{ average }}
-                {% else %}
-                    Non noté
-                {% endif %}
-                <br>
-                <br>
-                <br>
-                <br>
             </div>
-        </div>
-    <script>
 
-    </script>
+            <div class="wine-id-desktop">
+                <div class="wine-by-id-unit">
+                    <img src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="Photo de la bouteille de vin.">
+
+                    <div class="wine-button-year">
+                        <div class="wine-desc">
+                            <p>Année: <u>{{ wine.year }}</u></p>
+                            <p>Prix: <br><u>{{ wine.price }}€</u></p>
+                        </div>
+                        <p>{{ wine.description }}</p>
+                        <div class="wine-buttons">
+                            <button type="button" class="button-custom-one">
+                                <a href="#">
+                                    Achat
+                                </a>
+                            </button>
+                            <button type="button" class="button-custom-one">
+                                <a href="#">
+                                    Panier
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="wine-id-note">
+                <div class="custom-title-one">
+                    <h3>Note</h3>
+                </div>
+                <div class="responsive-note">
+                    {{ form_start(form) }}
+                    {{ form_widget(form.note) }}
+                    {{ form_widget(form.submit, { 'label': ' '}) }}
+                    {{ form_end(form) }}
+                    <div class="note-moyenne">
+                        <div class="your-note">
+                            <b>Votre note :</b> <br>
+                            {% for star in [1, 2, 3, 4, 5] %}
+                                {% if form.note.vars.value == star %}
+                                    <a href="#" disabled class="star active">★</a>
+                                {% else %}
+                                    <a href="#" disabled class="star">★</a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+
+                        <div class="moyenne">
+                            <b>Moyenne :</b> <br>
+                            {% set totalNotes = notes|length %}
+                            {% if totalNotes > 0 %}
+                                {% set sumNotes = 0 %}
+                                {% for note in notes %}
+                                    {% set sumNotes = sumNotes + note.note %}
+                                {% endfor %}
+                                {% set average = sumNotes / totalNotes %}
+                                {{ average }} ( {{ totalNotes }} votant(s))
+                            {% else %}
+                                Non noté
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     {% include'fixed/footer_two.html.twig' %}
+    <div id="success-message-async"></div>
+    {% for message in app.flashes('success') %}
+        <div class="success-custom">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <script>
+        setTimeout(function() {
+            const successCustom = document.querySelector('.success-custom');
+            if (successCustom !== null) {
+                successCustom.classList.add('fadeout');
+            }
+        }, 1500);
+    </script>
 </div>
 {% endblock %}

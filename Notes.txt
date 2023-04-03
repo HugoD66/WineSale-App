@@ -1,13 +1,20 @@
 
 Responsive
+    Accueil OK
+    Liste wine OK
+    Wine id OK
+    Redirect ok mais changer background color/image
+    user gestion ADMIN OK , juste bouton supprimer contactUs a centrer, finir commandes list user
+
+
+
+
+
+
 
 
 Commande entity
 
-
-note d'un pinard et refonte ui wine-unit
-
-
-Ajout retour dynamique Réussite opé commande
+note d'un pinard  peaufinner  et mettre retour succés
 
 Dans user gestion USER ROLE , configurer commandes

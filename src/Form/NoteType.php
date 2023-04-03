@@ -30,6 +30,7 @@ class NoteType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => false,
+
             ])
             ->add('user', EntityType::class, [
                 "class" =>  User::class,
@@ -43,7 +44,10 @@ class NoteType extends AbstractType
                 'label' => ' ',
                 'attr' => ['style' => 'display:none'], // champ caché via CSS
             ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => ['class' => 'submit-note'], // champ caché via CSS
+
+            ])
         ;
     }
 
