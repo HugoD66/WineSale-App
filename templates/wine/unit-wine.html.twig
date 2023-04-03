@@ -36,11 +36,49 @@
                     </div>
                 </div>
                 <p>{{ wine.description }}</p>
+
+                <p>NOTE</p>
+
+
+
+
+                {{ form_start(form) }}
+
+                {{ form_widget(form.note) }}
+                {{ form_widget(form.submit) }}
+                {{ form_end(form) }}
+
+                Votre note :
+                {% for star in [1, 2, 3, 4, 5] %}
+                    {% if form.note.vars.value == star %}
+                        <a href="#" class="star active">★</a>
+                    {% else %}
+                        <a href="#" class="star">★</a>
+                    {% endif %}
+                {% endfor %}
+
+
+                Moyenne :
+                {% set totalNotes = notes|length %}
+                {% if totalNotes > 0 %}
+                    {% set sumNotes = 0 %}
+                    {% for note in notes %}
+                        {% set sumNotes = sumNotes + note.note %}
+                    {% endfor %}
+                    {% set average = sumNotes / totalNotes %}
+                    {{ average }}
+                {% else %}
+                    Non noté
+                {% endif %}
+                <br>
                 <br>
                 <br>
                 <br>
             </div>
         </div>
+    <script>
+
+    </script>
     {% include'fixed/footer_two.html.twig' %}
 </div>
 {% endblock %}

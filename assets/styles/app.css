@@ -12283,5 +12283,19 @@ article .descri ul {
     opacity: 0;
   }
 }
+.star {
+  display: inline-block;
+  font-size: 2em;
+  text-decoration: none;
+  color: gray;
+}
+
+.star.active {
+  color: orange;
+}
+
+input[type=hidden] {
+  display: none;
+}
 
 /*# sourceMappingURL=app.css.map */
