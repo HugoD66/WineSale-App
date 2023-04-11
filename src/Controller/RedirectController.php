@@ -27,6 +27,14 @@ class RedirectController extends AbstractController
         ]);
     }
 
+    #[Route('/non-connecté', name: 'app_non_connect')]
+    public function noConnect(): Response
+    {
+        return $this->render('redirect/non_log.html.twig', [
+            'title'     => ' Win\'Export, Non connecté',
+        ]);
+    }
+
     #[Route('/changer-mot-de-passe/success/{id}', name: 'app_success_change_password')]
     public function changePasswordSuccess(int $id,
                                           ManagerRegistry $doctrine): Response
@@ -55,6 +63,14 @@ class RedirectController extends AbstractController
         return $this->render('redirect/success_register.html.twig', [
             'title'     => ' Win\'Export, Succès Enregistrement',
 
+        ]);
+    }
+
+    #[Route('/admin-cant-commande', name: 'app_admin_cant_commande')]
+    public function adminCantCommande(): Response
+    {
+        return $this->render('redirect/admin_cant.html.twig', [
+            'title'     => ' Win\'Export, Impossible',
         ]);
     }
 }

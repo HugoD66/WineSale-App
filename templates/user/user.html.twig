@@ -1,33 +1,33 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}{{title}}{% endblock %}
-
 {% block body %}
     {% include'fixed/nav_three.html.twig' %}
     <div class="content">
         <div class="user-gestion">
             <div class="custom-title-one custom-title-one-form">
-                <h3>Bonjour, {{ user.firstname }}</h3>
+                <h3>Bonjour, {{ app.user.firstname }}</h3>
                 <img src="{{ asset('picture/title/title-user-gestion.png') }}" alt="" class="title-h3">
             </div>
             <div class="responsive-user-coord">
             <ul class="user-coordonnees">
-                <li><u>Email</u> : {{ user.email }}</li>
-                <li><u>Prénom</u> : {{ user.firstname }}</li>
-                <li><u>Nom</u> : {{ user.lastname }}</li>
-                <li><u>Anniversaire</u> : {{ user.birthday|date('d-m-Y H:i:s') }}</li>
+                <li><u>Email</u> : {{ app.user.email }}</li>
+                <li><u>Prénom</u> : {{ app.user.firstname }}</li>
+                <li><u>Nom</u> : {{ app.user.lastname }}</li>
+                <li><u>Anniversaire</u> : {{ app.user.birthday|date("m/d/Y") }}</li>
             </ul>
-            {% if user.getPicture %}
+                {% if app.user.getPicture %}
                 <div class="picture-user">
-                    <img id="user-picture" src="{{ asset('picture/recipe-picture/' ~ user.getPicture()) }}" alt="Photo de profil sans enregistrement.">
+                    <img id="user-picture" src="{{ asset('picture/recipe-picture/' ~ app.user.getPicture()) }}" alt="Photo de profil sans enregistrement.">
                 </div>
             {% else %}
-                <h4>Ajouter une photo : </h4>
-                <div class="form-picture-user">
+                <div class="responsive-form">
+                    <h4>Ajouter une photo : </h4>
+                    <div class="form-picture-user">
                     {{ form_start(form) }}
                     {{ form_errors(form) }}
                     {{ form_row(form.submit, { 'label': ' '}) }}
                     {{ form_end(form) }}
+                </div>
                 </div>
             {% endif %}
             </div>
@@ -35,13 +35,14 @@
         <div class="user-gestion-relative">
             <img src="{{ asset('picture/icones/arrow-bot.svg') }}" alt="">
             <div class="user-button-list">
-                <button type="button" class="button-custom-three"><a href="{{ path('app_change_password', { 'id' : user.id}) }}">Changer MDP</a></button>
-                <button type="button" class="button-custom-three"><a href="{{ path('app_change_picture', { 'id' : user.id}) }}">Changer Photo </a></button>
+                <button type="button" class="button-custom-three"><a href="{{ path('app_change_password', { 'id' : app.user.id}) }}">Changer MDP</a></button>
+                <button type="button" class="button-custom-three"><a href="{{ path('app_change_picture', { 'id' : app.user.id}) }}">Changer Photo </a></button>
             </div>
             {% if app.user %}
                 {% if 'ROLE_ADMIN' in app.user.roles %}
                     <h4>Messages Reçus : </h4>
                     <div class="received-message">
+                    {% if messages is not empty %}
                     {% for message in messages %}
                         <div class="card-message">
                             <h5>{{ message.title }}</h5>
@@ -59,8 +60,10 @@
                             </div>
                         </div>
                         <div id="horiz-line"></div>
-
                     {% endfor %}
+                    {% else %}
+                        <p>Pas de message reçu.</p>
+                    {% endif %}
                     </div>
                     <h4 style="margin-top: 5%">Gestion des vins : </h4>
                     <button type="button" class="button-custom-three"><a href="{{ path('app_add_wine') }}">Ajouter Vin + </a></button>
@@ -81,17 +84,44 @@
                         </div>
                     {% endfor %}
                     </div>
-
                 {% elseif  'ROLE_USER' in app.user.roles %}
-                    <div class="user-list-commandes">
-    {# {% if user.commande %} #}
-                        <h4>Vos commandes : </h4>
-                        <br><br><br><br><br><br><br>
-                        <br><br><br><br><br><br><br>
-                        <br><br><br><br><br><br><br>
-                        <br><br><br><br><br><br><br>
-                        <br><br><br><br><br><br><br>
+                    <h4>Votre panier : </h4>
+                    <div class="list-com">
+                    {% for commande in commandes %}
+                        {% if  commande.user.id == app.user.id %}
+                            <div class="list-commades">
+                                <p> {{ commande.number }} x
+                                {% for wines in commande.wine %}
+                                    {{ wines.title }}</p> <p class="getTotal">{{ commande.getTotal }}€</p>
+                                <a href="{{ path('app_wine', { 'id' : wines.id}) }}">
+                                    <img src="{{ asset('picture/recipe-picture/' ~ wines.getPicture()) }}" alt="">
+                                </a>
+                                {% endfor %}
+                                <button type="button" class="button-custom-three" style="background-color: red;">
+                                    <a href="{{ path('delete_wine_list', { 'commande_id' : commande.id, 'user_id' : app.user.id }) }}">
+                                        <img src="{{ asset('picture/icones/cross.png') }}" alt="Lien pour supprimer une commande">
+                                    </a>
+                                </button>
+                            </div>
+                        {% else %}
+                        {% endif %}
+                    {% endfor %}
                     </div>
+                    <div class="total-valid">
+                        <p> Total :
+                            {% if totalCommande == 0 %}
+                                <p>Vide</p>
+                            {% else %}
+                            {{ totalCommande }}€
+                            {% endif %}
+                        </p>
+                        <button class="button-valid">
+                            <a href="">
+                                Valider
+                            </a>
+                        </button>
+                    </div>
+
                 {% endif %}
             {% else %}
             {% endif %}
@@ -110,6 +140,18 @@
                     successCustom.classList.add('fadeout');
                 }
             }, 1500);
+        </script>
+        <script>
+            const elements = document.querySelectorAll('.getTotal');
+
+            // Initialiser une variable pour stocker la somme totale
+            let total = 0;
+
+            // Boucler sur chaque élément et ajouter sa valeur au total
+            elements.forEach(element => {
+                total += parseFloat(element.textContent);
+            });
+
         </script>
     </div>
 {% endblock %}

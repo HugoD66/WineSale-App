@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+     {% include'fixed/nav_three.html.twig' %}
+    <div class="background-image-three"></div>
+    <div class="content">
+    <div class="user-panier">
+        <div class="custom-title-one custom-title-one-form">
+            <h3>Votre panier</h3>
+            <img src="{{ asset('picture/title/title-bootle-two.png') }}" alt="" class="title-h3">
+        </div>
+        <div class="panel-user-panier">
+            <div class="panier-commandes">
+            {% for commande in commandes %}
+                    {% if  commande.user.id == app.user.id %}
+                            <div class="panier-commandes-unit">
+                                <p> {{ commande.number }} x
+                                    {% for wines in commande.wine %}
+                                    {{ wines.title }}</p>
+                                <p class="getTotal">{{ commande.getTotal }}€</p>
+                                <button type="button" class="button-custom-three" style="background-color: red;">
+                                    <a href="{{ path('delete_wine_list', { 'commande_id' : commande.id, 'user_id' : app.user.id }) }}">
+                                        <img src="{{ asset('picture/icones/delete.svg') }}" alt="Lien pour supprimer une commande">
+                                    </a>
+                                </button>
+                                <a href="{{ path('app_wine', { 'id' : wines.id}) }}">
+                                    <img src="{{ asset('picture/recipe-picture/' ~ wines.getPicture()) }}" alt="" class="picture-commande">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% include'fixed/footer_four.html.twig' %}
+{% endblock %}

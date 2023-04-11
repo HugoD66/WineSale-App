@@ -19,6 +19,7 @@ class UpdateWineType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('year', IntegerType::class)
+            ->add('price', IntegerType::class)
             ->add('description', TextareaType::class, [
                 'label' => false,
                 'attr' =>  array(

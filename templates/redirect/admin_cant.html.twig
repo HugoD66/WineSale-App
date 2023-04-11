@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{title}}{% endblock %}
+{% block body %}
+    <div class="redirect">
+        <p>En tant qu'administrateur, il est impossible de commander</a>!</p>
+        <button type="button">
+            <a href="{{ path('app_home') }}">
+                <img src="{{ asset('picture/icones/arrow_back.png') }}" alt="Flèche retour en arrière">
+            </a>
+        </button>
+
+        <h1>Win'Export</h1>
+    </div>
+{% endblock %}

@@ -24,6 +24,7 @@ class HomeController extends AbstractController
     {
         $wines = $doctrine->getRepository(Wine::class)->findAll();
         $user = $this->getUser();
+        $utilisateurs = $doctrine->getRepository(User::class)->findAll();
 
         $contactUs = new ContactUs();
         $form = $this->createForm(ContactUsType::class, $contactUs);
@@ -35,15 +36,13 @@ class HomeController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Message envoyé avec succès.');
-
         }
-
-
         return $this->render('home.html.twig', [
             'title'     => 'Win\'Export, vente de vin',
             'wines'     => $wines,
             'form'      => $form,
             'user'      => $user,
+            'utilisateurs'  => $utilisateurs,
         ]);
     }
 }

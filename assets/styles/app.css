@@ -11025,6 +11025,10 @@ body .content section .section-mobile .propos-desc .propos-explain p {
   text-align: justify;
   margin-top: 0;
 }
+body .content section .section-mobile .propos-desc .propos-explain p red {
+  color: red;
+  cursor: pointer;
+}
 body .content section .section-mobile .propos-desc .propos-explain button {
   margin: 12%;
   min-height: 70px;
@@ -11064,6 +11068,10 @@ body .content section .section-desktop .propos-desc .propos-explain {
   height: auto;
   width: 90%;
 }
+body .content section .section-desktop .propos-desc .propos-explain red {
+  color: red;
+  cursor: pointer;
+}
 body .content section .section-desktop .propos-desc .propos-explain p {
   width: 60%;
   font-size: 20px;
@@ -11101,6 +11109,7 @@ body .content article .article-mobile .list-wines {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
 }
 body .content article .article-mobile .list-wines button {
@@ -11112,6 +11121,14 @@ body .content article .article-mobile .list-wines button a {
   font-size: 4em;
   font-family: "arial", sans-serif;
   color: #112a36;
+}
+body .content article .article-mobile .list-wines p {
+  font-size: 35px;
+  color: #151515;
+  font-family: "Source Sans Pro", sans-serif;
+  text-align: justify;
+  margin-top: 2%;
+  width: 60%;
 }
 body .content article .article-mobile .carousel-mobile {
   margin: 3% auto;
@@ -11147,7 +11164,7 @@ body .content article .article-desktop .article-mediaquery .list-wines {
 }
 body .content article .article-desktop .article-mediaquery .list-wines p {
   width: 60%;
-  font-size: 25px;
+  font-size: 20px;
   color: #151515;
   font-family: "Source Sans Pro", sans-serif;
   text-align: justify;
@@ -11438,7 +11455,7 @@ body .content footer .footer-responsive .img-panier:hover, body .content footer 
   transition: 0.3s ease-in-out;
 }
 body .content .list-wine {
-  background-color: #efefe2;
+  background-color: #deeef8;
   height: 85vh;
   overflow-y: hidden;
   position: fixed;
@@ -11466,6 +11483,11 @@ body .content .list-wine .panel input {
     top: 5.5vh;
   }
 }
+@media (min-width: 1100px) {
+  body .content .list-wine .panel input {
+    font-size: 25px;
+  }
+}
 body .content .list-wine .panel .panel-wine {
   box-shadow: 0 0 40px rgba(159, 162, 177, 0.8);
   border: 1px solid #326242;
@@ -11477,18 +11499,25 @@ body .content .list-wine .panel .panel-wine {
   bottom: 150px;
   height: auto;
   overflow-y: auto;
+  background-color: #efefe2;
+}
+@media (min-width: 500px) {
+  body .content .list-wine .panel .panel-wine {
+    bottom: 60px;
+  }
 }
 @media (min-width: 1100px) {
   body .content .list-wine .panel .panel-wine {
-    top: 150px;
+    top: 160px;
     width: 90%;
-    bottom: 80px;
+    bottom: 60px;
   }
 }
 body .content .list-wine .panel .panel-wine .wine-unit {
   border-radius: 15px;
   margin: auto;
   width: 100%;
+  background-color: #efefe2;
 }
 @media (min-width: 1500px) {
   body .content .list-wine .panel .panel-wine .wine-unit {
@@ -11525,13 +11554,25 @@ body .content .list-wine .panel .panel-wine .wine-unit p {
 body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
+  width: 100%;
 }
 body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list img {
   border: 15px;
   box-shadow: 0 0 15px 5px rgba(112, 183, 201, 0.48);
   border-radius: 10px;
+}
+@media (min-width: 700px) {
+  body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list img {
+    width: 75%;
+  }
+}
+@media (min-width: 1100px) {
+  body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list img {
+    width: 60%;
+    margin: auto auto auto 10%;
+  }
 }
 body .content .list-wine .panel .panel-wine .wine-unit .wine-unit-list ul {
   list-style: none;
@@ -11551,6 +11592,7 @@ body .content .wine-by-id {
   position: relative;
   opacity: 1;
   z-index: 2;
+  background-color: #daefdf;
 }
 body .content .wine-by-id .wine-by-id-unit {
   display: flex;
@@ -11568,10 +11610,11 @@ body .content .wine-by-id .wine-by-id-unit img {
   width: 70%;
   margin: auto;
   border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px #000000;
 }
 @media (min-width: 1200px) {
   body .content .wine-by-id .wine-by-id-unit img {
-    width: 30%;
+    width: 27%;
   }
 }
 body .content .wine-by-id .wine-by-id-unit .wine-button-year {
@@ -11593,54 +11636,32 @@ body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  font-size: 35px;
+  flex-direction: row;
   color: black;
   font-family: "Lato", sans-serif;
   text-wrap: none;
+  width: 100%;
+  margin: auto;
   text-align: center;
 }
 @media (min-width: 1200px) {
   body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc {
     font-size: 25px;
-    flex-direction: row;
   }
 }
-body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc u {
-  text-decoration: 1px solid underline #114056;
-  text-underline-offset: 4px;
-}
-@media (min-width: 1200px) {
-  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc u {
-    text-underline-offset: 2px;
-  }
-}
-body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-@media (min-width: 1100px) {
-  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons button {
-  min-width: 10vw;
-  margin: 5%;
-  padding: 10px;
-}
-body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons button a {
-  text-decoration: none;
-  color: black;
-  font-size: 30px;
+body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc p {
+  text-align: center;
+  font-size: 40px;
   text-wrap: none;
 }
-@media (min-width: 1100px) {
-  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-buttons button a {
-    font-size: 25px;
+body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc p u {
+  text-decoration: 1px solid underline #114056;
+  text-underline-offset: 4px;
+  text-wrap: none;
+}
+@media (min-width: 1200px) {
+  body .content .wine-by-id .wine-by-id-unit .wine-button-year .wine-desc p u {
+    text-underline-offset: 2px;
   }
 }
 body .content .wine-by-id p {
@@ -11655,6 +11676,55 @@ body .content .wine-by-id p {
   body .content .wine-by-id p {
     font-size: 23px;
   }
+}
+body .content .wine-by-id .wine-id-desktop .wine-desc p {
+  font-size: 20px;
+  text-wrap: none;
+}
+body .content .wine-by-id .wine-buttons {
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 80%;
+  margin: 20px auto auto;
+}
+@media (min-width: 1100px) {
+  body .content .wine-by-id .wine-buttons {
+    width: 60%;
+    margin: 50px auto auto;
+  }
+}
+body .content .wine-by-id .wine-buttons #commande_form_number {
+  width: 15vw;
+  font-size: 27px;
+  margin-top: 3px;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px -15px 40px rgba(159, 162, 177, 0.8);
+}
+body .content .wine-by-id .wine-buttons #commande_form_number:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+body .content .wine-by-id .wine-buttons button {
+  width: 15vw;
+  height: 70px;
+  padding: 10px;
+  font-size: 35px;
+  background-color: white;
+}
+@media (min-width: 1100px) {
+  body .content .wine-by-id .wine-buttons button {
+    font-size: 25px;
+  }
+}
+body .content .wine-by-id .wine-buttons button a {
+  text-decoration: none;
+  color: black;
+  text-wrap: none;
 }
 body .content .wine-by-id .wine-id-note {
   display: flex;
@@ -11772,7 +11842,7 @@ body .content .user-gestion .responsive-user-coord .picture-user img {
 }
 body .content .user-gestion .responsive-user-coord ul {
   font-size: 35px;
-  text-align: center;
+  text-align: start;
   list-style: none;
   font-family: "Tilt Neon", cursive;
   color: #112a36;
@@ -11781,16 +11851,21 @@ body .content .user-gestion .responsive-user-coord ul u {
   text-decoration: 2px solid #204c60 underline;
   text-underline-offset: 3px;
 }
-body .content .user-gestion .responsive-user-coord .form-picture-user {
+body .content .user-gestion .responsive-user-coord .responsive-form {
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 2%;
+}
+body .content .user-gestion .responsive-user-coord .responsive-form .form-picture-user {
   margin-bottom: 0;
 }
-body .content .user-gestion .responsive-user-coord .form-picture-user form {
+body .content .user-gestion .responsive-user-coord .responsive-form .form-picture-user form {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
 }
-body .content .user-gestion .responsive-user-coord .form-picture-user form input {
+body .content .user-gestion .responsive-user-coord .responsive-form .form-picture-user form input {
   background-color: #fff;
   border: 3px solid #000;
   color: #000;
@@ -11799,7 +11874,7 @@ body .content .user-gestion .responsive-user-coord .form-picture-user form input
   font-size: 22px;
   font-weight: bold;
 }
-body .content .user-gestion .responsive-user-coord .form-picture-user form .button-custom-button-pic {
+body .content .user-gestion .responsive-user-coord .responsive-form .form-picture-user form .button-custom-button-pic {
   background-color: transparent;
   color: white;
   border: none;
@@ -11813,7 +11888,7 @@ body .content .user-gestion .responsive-user-coord .form-picture-user form .butt
   background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
 }
-body .content .user-gestion .responsive-user-coord .form-picture-user form .button-custom-button-pic:hover {
+body .content .user-gestion .responsive-user-coord .responsive-form .form-picture-user form .button-custom-button-pic:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.5s ease-in-out;
@@ -11836,6 +11911,104 @@ body .content .user-gestion-relative {
   body .content .user-gestion-relative {
     top: 80vh;
   }
+}
+body .content .user-gestion-relative p {
+  text-align: center;
+  font-family: "arial", sans-serif;
+  font-size: 30px;
+  color: #112a36;
+  margin: 2%;
+}
+@media (min-width: 750px) {
+  body .content .user-gestion-relative p {
+    font-size: 25px;
+  }
+}
+body .content .user-gestion-relative .list-com {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+@media (min-width: 1100px) {
+  body .content .user-gestion-relative .list-com {
+    flex-direction: row;
+    width: 80%;
+  }
+}
+body .content .user-gestion-relative .list-com .list-commades {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1% auto;
+  width: 80%;
+  border: 1px solid #204c60;
+  border-radius: 15px;
+}
+@media (min-width: 1100px) {
+  body .content .user-gestion-relative .list-com .list-commades {
+    width: 39%;
+  }
+}
+body .content .user-gestion-relative .list-com .list-commades p {
+  flex: 1;
+  font-size: 35px;
+  font-family: "Tilt Neon", cursive;
+  color: #112a36;
+}
+body .content .user-gestion-relative .list-com .list-commades img {
+  width: 150px;
+  height: 150px;
+  border-radius: 90%;
+  margin: 2%;
+}
+body .content .user-gestion-relative .list-com .list-commades button {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+body .content .user-gestion-relative .list-com .list-commades button a img {
+  width: 35px;
+  height: 35px;
+  border-radius: 90%;
+}
+body .content .user-gestion-relative .total-valid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+  margin: auto auto 12vh;
+}
+body .content .user-gestion-relative .total-valid p {
+  font-size: 35px;
+  color: #ab1515;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+}
+body .content .user-gestion-relative .total-valid .button-valid {
+  font-size: 40px;
+  width: auto;
+  min-width: 20vw;
+  min-height: 6vh;
+  border: 10px;
+  border-radius: 15px;
+  padding: 8px;
+  background-color: #606060;
+}
+body .content .user-gestion-relative .total-valid .button-valid:hover {
+  background-color: #efefe2;
+}
+body .content .user-gestion-relative .total-valid .button-valid a {
+  font-size: 40px;
+  font-weight: lighter;
+  text-decoration: none;
+  color: #efefe2;
+}
+body .content .user-gestion-relative .total-valid .button-valid a:hover {
+  color: #606060;
 }
 body .content .user-gestion-relative img {
   margin: auto;
@@ -12472,6 +12645,28 @@ article .descri ul {
   }
 }
 
+.background-image-three {
+  background-image: url("../../public/picture/background-panier.png");
+  background-position: center bottom 25%;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0.6;
+}
+@media (min-width: 1100px) {
+  .background-image-three {
+    background-size: 30%;
+    background-position: center left 25%;
+  }
+}
+
 .form-one {
   position: relative;
   opacity: 1;
@@ -12574,7 +12769,7 @@ article .descri ul {
 }
 @media (min-width: 1100px) {
   .form-two form label {
-    font-size: 28px;
+    font-size: 26px;
   }
 }
 .form-two form input {
@@ -12586,7 +12781,7 @@ article .descri ul {
 }
 @media (min-width: 1100px) {
   .form-two form input {
-    font-size: 25px;
+    font-size: 22px;
   }
 }
 .form-two form .form-row {
@@ -12630,11 +12825,13 @@ article .descri ul {
 @media (min-width: 1100px) {
   .redirect {
     background-size: 30%;
+    background-image: url("../../public/picture/background-redirect-desktop.png");
   }
 }
 .redirect p {
   font-family: "Tilt Neon", cursive;
   font-size: 35px;
+  text-align: center;
 }
 .redirect button {
   border: none;
@@ -12723,6 +12920,150 @@ input[type=hidden] {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+.user-panier {
+  width: 100%;
+  position: absolute;
+  bottom: 10vh;
+  top: 10vh;
+  left: 0;
+  right: 0;
+}
+@media (min-width: 1100px) {
+  .user-panier {
+    width: 80%;
+    margin: auto;
+  }
+}
+.user-panier .panel-user-panier {
+  border: 1px solid black;
+  position: absolute;
+  bottom: 2vh;
+  top: 17vh;
+  left: 2vw;
+  right: 2vw;
+  display: flex; /* Pour aligner les blocs horizontalement */
+  flex-wrap: nowrap; /* Empêcher les blocs de retourner à la ligne */
+  overflow-x: auto; /* Ajouter une barre de défilement en cas de dépassement */
+  white-space: nowrap;
+}
+.user-panier .panel-user-panier .list-com {
+  position: relative; /* Ajouter position relative au conteneur parent */
+  height: auto;
+  margin: 1%;
+  border-radius: 10px;
+  border: 1px solid #70b7c9;
+  min-width: 500px;
+  background-color: whitesmoke;
+}
+.user-panier .panel-user-panier .list-com .list-commades {
+  width: 1500px;
+  background-color: blue;
+}
+.user-panier .panel-user-panier .list-com .list-commades img {
+  width: 200px;
+  height: 200px;
+}
+.user-panier .panel-user-panier .list-com .list-commades button img {
+  width: 50px;
+  height: 50px;
+}
+.user-panier .panel-user-panier .panier-commandes {
+  display: flex; /* Pour aligner les blocs horizontalement */
+  flex-wrap: nowrap; /* Empêcher les blocs de retourner à la ligne */
+  overflow-x: auto; /* Ajouter une barre de défilement en cas de dépassement */
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+}
+.user-panier .panel-user-panier .panier-commandes .panier-commandes-unit {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 95%;
+  margin: 1% auto;
+}
+.user-panier .panel-user-panier .panier-commandes .panier-commandes-unit p {
+  flex: 1;
+  padding: 2%;
+  font-size: 30px;
+  font-family: "Oregano", cursive;
+  color: #114056;
+  font-weight: bold;
+}
+.user-panier .panel-user-panier .panier-commandes .panier-commandes-unit .picture-commande {
+  width: 180px;
+  height: 180px;
+  border-radius: 15px;
+}
+.user-panier .panel-user-panier .panier-commandes .panier-commandes-unit button {
+  margin-right: 3%;
+}
+.user-panier .panel-user-panier .panier-commandes .panier-commandes-unit button img {
+  width: 30px;
+  height: 30px;
+}
+
+.modal-content {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  max-height: 70vh;
+}
+.modal-content h5, .modal-content .h5 {
+  font-family: "Lato", sans-serif;
+  font-size: 40px;
+}
+.modal-content .modal-body {
+  display: flex; /* Pour aligner les blocs horizontalement */
+  flex-wrap: wrap; /* Empêcher les blocs de retourner à la ligne */
+  overflow-y: auto; /* Ajouter une barre de défilement en cas de dépassement */
+  white-space: nowrap; /* Empêcher les blocs enfants de revenir à la ligne */
+  align-items: start;
+  justify-content: center;
+  margin: 2%;
+}
+.modal-content .modal-body .modal-card-user {
+  margin: 2% auto;
+  width: 90%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: 1px solid #114056;
+  border-radius: 60px;
+}
+.modal-content .modal-body .modal-card-user img {
+  width: 120px;
+  height: 120px;
+  border-radius: 90%;
+}
+.modal-content .modal-body .modal-card-user p {
+  font-size: 40px;
+  font-family: "Tilt Neon", cursive;
+  color: #31311a;
+  flex: 1;
+  padding: 5px;
+}
+@media (min-width: 1100px) {
+  .modal-content .modal-body .modal-card-user p {
+    font-size: 30px;
+  }
+}
+.modal-content button {
+  font-size: 35px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+@media (min-width: 1100px) {
+  .modal-content button {
+    font-size: 30px;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

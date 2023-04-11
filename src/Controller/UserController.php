@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\ContactUs;
+use App\Entity\Message;
+use App\Entity\Post;
+use App\Entity\User;
 use App\Entity\Wine;
 use App\Form\CompleteUserType;
 use App\Form\PictureUserType;
@@ -25,8 +29,14 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
 
+        $totalCommande = $doctrine->getRepository(Commande::class)->getTotalCommandeByUser($user);
+
+
+
+
         $messages = $doctrine->getRepository(ContactUs::class)->findAll();
         $wines = $doctrine->getRepository(Wine::class)->findAll();
+        $commandes =  $doctrine->getRepository(Commande::class)->findBy(['user' => $user]);
 
         $form= $this->createForm(PictureUserType::class, $user);
         $form->handleRequest($request);
@@ -54,7 +64,9 @@ class UserController extends AbstractController
             'form'          => $form->createView(),
             'messages'      => $messages,
             'wines'         => $wines,
-            'title'         => 'Win\'Export - Gestion comptes'
+            'title'         => 'Win\'Export - Gestion comptes',
+            'commandes'     =>  $commandes,
+            'totalCommande' => $totalCommande,
         ]);
     }
 
@@ -85,5 +97,24 @@ class UserController extends AbstractController
 
 
         return $this->redirectToRoute('app_user', ['id' => $id]);
+    }
+
+    #[Route('/utilisateur/{user_id}/remove-commande/{commande_id}', name: 'delete_wine_list')]
+    public function removeWineList(ManagerRegistry $doctrine,
+                                    int $user_id,
+                                    int $commande_id): Response
+    {
+
+        $user = $doctrine->getRepository(User::class)->find($user_id);
+        $commande = $doctrine->getRepository(Commande::class)->find($commande_id);
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($commande);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Commande retirée.');
+
+
+        return $this->redirectToRoute('app_user', ['id' => $user]);
     }
 }

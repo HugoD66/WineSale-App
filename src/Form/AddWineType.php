@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Wine;
+use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -19,6 +20,7 @@ class AddWineType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('year', IntegerType::class)
+            ->add('price', IntegerType::class)
             ->add('description', TextareaType::class, [
                 'label' => false,
                 'attr' =>  array(

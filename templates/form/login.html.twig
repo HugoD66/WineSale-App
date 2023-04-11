@@ -6,7 +6,6 @@
     {% include'fixed/nav_two.html.twig' %}
     <div class="background-image-two"></div>
     <div class="content">
-
         <div class="form-two">
             <div class="custom-title-one custom-title-one-form">
                 <h3>Connexion</h3>
@@ -27,12 +26,7 @@
                     <label for="password">Mot de passe:</label>
                     <input type="password" id="password" name="_password">
                 </div>
-
-
-                {# If you want to control the URL the user is redirected to on success
-                <input type="hidden" name="_target_path" value="/account"> #}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
                 <button type="submit" class="button-custom-two">Se connecter</button>
             </form>
             {% if error %}

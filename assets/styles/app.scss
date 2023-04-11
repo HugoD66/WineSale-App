@@ -241,6 +241,10 @@ body {
                             font-family: $text;
                             text-align: justify;
                             margin-top: 0;
+                            red {
+                                color: red;
+                                cursor: pointer;
+                            }
                         }
                         button {
                             margin: 12%;
@@ -283,6 +287,10 @@ body {
                         flex-direction: column;
                         height: auto;
                         width: 90%;
+                        red {
+                            color: red;
+                            cursor: pointer;
+                        }
                         p {
                             width: 60%;
                             font-size: 20px;
@@ -322,8 +330,8 @@ body {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    flex-direction: column;
                     width: 100%;
-
                     button {
                         margin: 8%;
                         min-height: 70px;
@@ -333,6 +341,14 @@ body {
                             font-family: $nav;
                             color: $blue5;
                         }
+                    }
+                    p {
+                        font-size: 35px;
+                        color: $white6;
+                        font-family: $text;
+                        text-align: justify;
+                        margin-top: 2%;
+                        width: 60%;
                     }
                 }
                 .carousel-mobile {
@@ -369,7 +385,7 @@ body {
                         width: 70%;
                         p {
                             width: 60%;
-                            font-size: 25px;
+                            font-size: 20px;
                             color: $white6;
                             font-family: $text;
                             text-align: justify;
@@ -650,7 +666,7 @@ body {
             }
         }
         .list-wine {
-            background-color: $beige0;
+            background-color: #deeef8;
             height: 85vh;
             overflow-y: hidden;
             position: fixed;
@@ -673,6 +689,9 @@ body {
                     @media (min-width: 550px) {
                         top: 5.5vh;
                     }
+                    @media (min-width: 1100px) {
+                        font-size: 25px;
+                    }
                 }
                 .panel-wine {
                     box-shadow: 0 0 40px rgba(159, 162, 177, .8);
@@ -685,16 +704,20 @@ body {
                     bottom: 150px;
                     height: auto;
                     overflow-y: auto;
+                    background-color: $beige0;
+                    @media(min-width: 500px) {
+                        bottom: 60px;
+                    }
                     @media(min-width: 1100px) {
-                        top: 150px;
+                        top: 160px;
                         width:  90%;
-                        bottom: 80px;
-
+                        bottom: 60px;
                     }
                     .wine-unit {
                         border-radius: 15px;
                         margin: auto;
                         width: 100%;
+                        background-color: $beige0;
                         @media(min-width: 1500px) {
                             width: 49.5%;
                             margin: auto;
@@ -725,12 +748,20 @@ body {
                         .wine-unit-list {
                             display: flex;
                             align-items: center;
-                            justify-content: space-around;
+                            justify-content: space-between;
                             flex-direction: row;
+                            width: 100%;
                             img {
                                 border: 15px;
                                 box-shadow: 0 0 15px 5px rgba(112,183,201,0.48);
                                 border-radius: 10px;
+                                @media (min-width: 700px) {
+                                    width: 75%;
+                                }
+                                @media (min-width: 1100px) {
+                                    width: 60%;
+                                    margin: auto auto auto 10%;
+                                }
                             }
                             ul {
                                 list-style: none;
@@ -753,6 +784,7 @@ body {
             position: relative;
             opacity: 1;
             z-index: 2;
+            background-color: #daefdf;
             .wine-by-id-unit {
                 display: flex;
                 flex-direction: column;
@@ -766,8 +798,9 @@ body {
                     width: 70%;
                     margin: auto;
                     border-radius: 10px;
+                    box-shadow: 5px 5px 15px 5px #000000;
                     @media (min-width: 1200px){
-                        width: 30%;
+                        width: 27%;
                     }
 
                 }
@@ -787,48 +820,31 @@ body {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        flex-direction: column;
-                        font-size: 35px;
+                        flex-direction: row;
                         color: black;
                         font-family: $subTitle;
                         text-wrap: none;
+                        width: 100%;
+                        margin: auto;
                         text-align: center;
                         @media (min-width: 1200px){
                             font-size: 25px;
-                            flex-direction: row;
                         }
-                        u {
-                            text-decoration: 1px solid underline $blue4;
-                            text-underline-offset: 4px;
-                            @media (min-width: 1200px){
-                                text-underline-offset: 2px;
-
-                            }
-                        }
-                    }
-                    .wine-buttons {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-direction: column;
-                        @media (min-width: 1100px) {
-                            flex-direction: row;
-                            justify-content: space-around;
-                        }
-                        button {
-                            min-width: 10vw;
-                            margin: 5%;
-                            padding: 10px;
-                            a {
-                                text-decoration: none;
-                                color: black;
-                                font-size: 30px;
+                        p {
+                            text-align: center;
+                            font-size: 40px;
+                            text-wrap: none;
+                            u {
+                                text-decoration: 1px solid underline $blue4;
+                                text-underline-offset: 4px;
                                 text-wrap: none;
-                                @media (min-width: 1100px) {
-                                    font-size: 25px;
+                                @media (min-width: 1200px){
+                                    text-underline-offset: 2px;
+
                                 }
                             }
                         }
+
                     }
                 }
             }
@@ -844,7 +860,54 @@ body {
                 }
             }
             .wine-id-desktop {
+                .wine-desc {
+                    p {
+                        font-size: 20px;
+                        text-wrap: none;
 
+                    }
+                }
+            }
+            .wine-buttons {
+                display: flex;
+                align-items: start;
+                justify-content: space-around;
+                flex-direction: row;
+                width: 80%;
+                margin: 20px auto auto;
+                @media (min-width: 1100px) {
+                    width: 60%;
+                    margin: 50px auto auto;
+                }
+                #commande_form_number {
+                    width: 15vw;
+                    font-size: 27px;
+                    margin-top: 3px;
+                    border-radius: 0 0 15px 15px;
+                    text-align: center;
+                    transition: all 0.3s ease-in-out;
+                    box-shadow: 0px -15px 40px rgba(159, 162, 177, .8);
+                    &:hover {
+                        transform: scale(1.1);
+                        cursor: pointer;
+                        transition: .3s ease-in-out;
+                    }
+                }
+                button {
+                    width: 15vw;
+                    height: 70px;
+                    padding: 10px;
+                    font-size: 35px;
+                    background-color: white;
+                    @media (min-width: 1100px) {
+                        font-size: 25px;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        text-wrap: none;
+                    }
+                }
             }
             .wine-id-note {
                 display: flex;
@@ -926,7 +989,6 @@ body {
                 @media (min-width: 1300px) {
                     flex-direction: row;
                     margin: 3% auto;
-
                 }
                 h4 {
                     font-size: 45px;
@@ -959,7 +1021,7 @@ body {
                 }
                 ul {
                     font-size: 35px;
-                    text-align: center;
+                    text-align: start;
                     list-style: none;
                     font-family: $cursiveTitle;
                     color: $blue5;
@@ -968,39 +1030,44 @@ body {
                         text-underline-offset: 3px;
                     }
                 }
-                .form-picture-user {
-                    margin-bottom: 0;
-                    form {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-direction: row-reverse;
-                        input {
-                            background-color: #fff;
-                            border: 3px solid #000;
-                            color: #000;
-                            padding: 10px 25px;
-                            border-radius: 10px;
-                            font-size: 22px;
-                            font-weight: bold;
-                        }
-                        .button-custom-button-pic {
-                            background-color: transparent;
-                            color: white;
-                            border: none;
-                            border-radius: 5px;
-                            height: 100px;
-                            width: 100px;
-                            position: relative;
-                            background-image: url("../../public/picture/icones/arrow-right.svg");
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            transition: all 0.5s ease-in-out;
-                            &:hover {
-                                cursor: pointer;
-                                transform: scale(1.2);
+                .responsive-form {
+                    border: 1px solid black;
+                    border-radius: 15px;
+                    margin: 2%;
+                    .form-picture-user {
+                        margin-bottom: 0;
+                        form {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: row-reverse;
+                            input {
+                                background-color: #fff;
+                                border: 3px solid #000;
+                                color: #000;
+                                padding: 10px 25px;
+                                border-radius: 10px;
+                                font-size: 22px;
+                                font-weight: bold;
+                            }
+                            .button-custom-button-pic {
+                                background-color: transparent;
+                                color: white;
+                                border: none;
+                                border-radius: 5px;
+                                height: 100px;
+                                width: 100px;
+                                position: relative;
+                                background-image: url("../../public/picture/icones/arrow-right.svg");
+                                background-size: cover;
+                                background-position: center;
+                                background-repeat: no-repeat;
                                 transition: all 0.5s ease-in-out;
+                                &:hover {
+                                    cursor: pointer;
+                                    transform: scale(1.2);
+                                    transition: all 0.5s ease-in-out;
+                                }
                             }
                         }
                     }
@@ -1022,6 +1089,101 @@ body {
             top: 70vh;
             @media(min-width: 750px) {
                 top: 80vh;
+            }
+            p {
+                text-align: center;
+                font-family: $nav;
+                font-size: 30px;
+                color: $blue5;
+                margin: 2%;
+                @media(min-width: 750px) {
+                    font-size: 25px;
+                }
+            }
+            .list-com {
+                width:  95%;
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                flex-wrap: wrap;
+                @media(min-width: 1100px) {
+                    flex-direction: row;
+                    width: 80%;
+                }
+                .list-commades {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    margin: 1% auto;
+                    width: 80%;
+                    border: 1px solid $blue3;
+                    border-radius: 15px;
+                    @media(min-width: 1100px) {
+                        width: 39%;
+                    }
+                    p {
+                        flex:1;
+                        font-size: 35px;
+                        font-family: $cursiveTitle;
+                        color: $blue5;
+                    }
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 90%;
+                        margin: 2%;
+                    }
+                    button {
+                        margin-right: 5%;
+                        margin-left: 5%;
+                        a {
+                            img {
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 90%;
+                            }
+                        }
+                    }
+
+                }
+            }
+            .total-valid {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                width: 70%;
+                margin: auto auto 12vh;
+                p {
+                    font-size: 35px;
+                    color: #ab1515;
+                    font-family: $subTitle;
+                    font-weight: bold;
+                }
+                .button-valid {
+                    font-size: 40px;
+                    width: auto;
+                    min-width: 20vw;
+                    min-height: 6vh;
+                    border: 10px;
+                    border-radius: 15px;
+                    padding: 8px;
+                    background-color: $white4;
+                    &:hover {
+                        background-color: $beige0;
+                    }
+                    a {
+                        font-size: 40px;
+                        font-weight: lighter;
+                        text-decoration: none;
+                        color: $beige0;
+                        &:hover {
+                            color: $white4;
+                        }
+                    }
+                }
             }
             img {
                 margin: auto;
@@ -1650,10 +1812,27 @@ article {
     @media(min-width: 1100px){
         background-size: 30%;
         background-position: center left 25%;
-
     }
 }
-
+.background-image-three {
+    background-image: url('../../public/picture/background-panier.png');
+    background-position: center bottom 25% ;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.6;
+    @media(min-width: 1100px){
+        background-size: 30%;
+        background-position: center left 25%;
+    }
+}
 //Forms
 .form-one {
     position: relative;
@@ -1743,7 +1922,7 @@ article {
             width: 30vw;
             font-family: $cursiveTitle;
             @media(min-width: 1100px) {
-                font-size: 28px;
+                font-size: 26px;
             }
         }
         input {
@@ -1753,7 +1932,7 @@ article {
             border: 1px solid $green5;
             font-size: 34px;
             @media(min-width: 1100px) {
-                font-size: 25px;
+                font-size: 22px;
             }
         }
         .form-row {
@@ -1795,10 +1974,13 @@ article {
     background-color: #0C151E;
     @media(min-width: 1100px) {
         background-size: 30%;
+        background-image: url("../../public/picture/background-redirect-desktop.png");
+
     }
     p {
         font-family: $cursiveTitle;
         font-size: 35px;
+        text-align: center;
     }
     button {
         border: none;
@@ -1830,11 +2012,6 @@ article {
         text-underline-offset: 10px;
     }
 }
-
-
-
-
-
 .success-custom {
     position: fixed;
     color: black;
@@ -1857,46 +2034,173 @@ article {
     from { opacity: 1; }
     to { opacity: 0; }
 }
-
-
-
-
-
-
-
-
-
+//Notation des vins
 .star {
     display: inline-block;
     font-size: 2em;
     text-decoration: none;
     color: gray;
 }
-
 .star.active {
     color: orange;
 }
-
 input[type="hidden"] {
     display: none;
 }
-
-
-
-
+//Barre de défilement
 ::-webkit-scrollbar {
     width: 10px;
 }
-
 ::-webkit-scrollbar-track {
     background-color: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+}
+.user-panier {
+    width: 100%;
+    position: absolute;
+    bottom: 10vh;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    @media(min-width: 1100px) {
+        width: 80%;
+        margin: auto;
+    }
+    @media(min-width: 1600px) {
+
+    }
+    .panel-user-panier {
+        border: 1px solid black;
+        position: absolute;
+        bottom: 2vh;
+        top: 17vh;
+        left: 2vw;
+        right: 2vw;
+        display: flex; /* Pour aligner les blocs horizontalement */
+        flex-wrap: nowrap; /* Empêcher les blocs de retourner à la ligne */
+        overflow-x: auto; /* Ajouter une barre de défilement en cas de dépassement */
+        white-space: nowrap;
+        .list-com {
+            position: relative; /* Ajouter position relative au conteneur parent */
+            height: auto;
+            margin: 1%;
+            border-radius: 10px;
+            border: 1px solid $blue2;
+            min-width: 500px;
+            background-color: $white1;
+            .list-commades {
+                width: 1500px;
+                background-color: blue;
+                img {
+                    width: 200px;
+                    height: 200px;
+                }
+                button {
+                    img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+        .panier-commandes {
+            display: flex; /* Pour aligner les blocs horizontalement */
+            flex-wrap: nowrap; /* Empêcher les blocs de retourner à la ligne */
+            overflow-x: auto; /* Ajouter une barre de défilement en cas de dépassement */
+            white-space: nowrap;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            margin: auto;
+            .panier-commandes-unit {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: row;
+                width: 95%;
+                margin: 1% auto;
+                p {
+                    flex: 1;
+                    padding: 2%;
+                    font-size:  30px;
+                    font-family: $mainTitle;
+                    color: $blue4;
+                    font-weight: bold;
+                }
+                .picture-commande {
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 15px;
+                }
+                button {
+                    margin-right: 3%;
+                    img {
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+.modal-content {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    max-height: 70vh;
+    h5 {
+        font-family: $subTitle;
+        font-size: 40px;
+    }
+    .modal-body {
+        display: flex; /* Pour aligner les blocs horizontalement */
+        flex-wrap: wrap; /* Empêcher les blocs de retourner à la ligne */
+        overflow-y: auto; /* Ajouter une barre de défilement en cas de dépassement */
+        white-space: nowrap; /* Empêcher les blocs enfants de revenir à la ligne */
+        align-items: start;
+        justify-content: center;
+        margin: 2%;
+        .modal-card-user {
+            margin: 2% auto;
+            width:  90%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            border: 1px solid $blue4;
+            border-radius: 60px;
+            img {
+                width: 120px;
+                height: 120px;
+                border-radius: 90%;
+            }
+            p {
+                font-size: 40px;
+                font-family: $cursiveTitle;
+                color: $beige4;
+                flex: 1;
+                padding: 5px;
+                @media (min-width: 1100px) {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+
+    button {
+        font-size: 35px;
+        font-family: $text;
+        @media (min-width: 1100px) {
+            font-size: 30px;
+        }
+    }
 }

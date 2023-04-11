@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\Note;
 use App\Entity\User;
 use App\Entity\Wine;
+use App\Form\CommandeFormType;
 use App\Form\NoteType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -34,29 +36,54 @@ class WineController extends AbstractController
     {
         $wine = $doctrine->getRepository(Wine::class)->find($id);
         $notes = $wine->getNote();
+        $user = $this->getUser();
+
 
         $note = new Note();
         $form= $this->createForm(NoteType::class, $note);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $existingNote = $doctrine->getRepository(Note::class)->findOneBy(['user' => $this->getUser(), 'wine' => $wine]);
-            if($existingNote) {
-                $existingNote->setNote($note->getNote());
-                $entityManager->flush();
+            if (!$user) {
+                $this->addFlash('success', 'Connexion obligatoire.');
+
             } else {
-                $note->setUser($this->getUser());
-                $note->setWine($wine);
-                $note = $form->getData();
-                $entityManager->persist($note);
-                $entityManager->flush();
+                $existingNote = $doctrine->getRepository(Note::class)->findOneBy(['user' => $this->getUser(), 'wine' => $wine]);
+                if ($existingNote) {
+                    $existingNote->setNote($note->getNote());
+                    $entityManager->flush();
+                } else {
+                    $note->setUser($this->getUser());
+                    $note->setWine($wine);
+                    $note = $form->getData();
+                    $entityManager->persist($note);
+                    $entityManager->flush();
+                }
+                $this->addFlash('success', 'Note envoyée.');
             }
-            $this->addFlash('success', 'Note envoyée.');
         }
+
+        $commande = new commande();
+        $formCommande = $this->createForm(CommandeFormType::class, $commande);
+        $formCommande->handleRequest($request);
+        if ($formCommande->isSubmitted() && $formCommande->isValid()) {
+            $commande->setUser($this->getUser());
+            $commande->addWine($wine);
+            $commande = $formCommande->getData();
+            $entityManager->persist($commande);
+            $entityManager->flush();
+            $this->addFlash('success', 'Ajouté au panier.');
+        }
+
         return $this->render('wine/unit-wine.html.twig', [
             'wine' => $wine,
             'form' => $form->createView(),
+            'formCommande' => $formCommande,
             'notes' => $notes,
             'title' => 'Win\'Export - ' . $wine->getTitle(),
         ]);
     }
+
+
+
+
 }

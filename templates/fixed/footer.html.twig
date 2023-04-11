@@ -4,9 +4,22 @@
             <img src="{{ asset('picture/icones/arrow.png') }}" alt="" class="img-arrow">
         </a>
         <h6>Win'Export</h6>
-        <a href="#returnTop">
+        {% if app.user %}
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+                <a href="{{ path('app_admin_cant_commande') }}">
+                    <img src="{{ asset('picture/icones/panier.png') }}" alt="" class="img-panier">
+                </a>
+
+            {% elseif 'ROLE_USER' in app.user.roles %}
+                <a href="{{ path('app_panier', {'id': app.user.id}) }}">
+                    <img src="{{ asset('picture/icones/panier.png') }}" alt="" class="img-panier">
+                </a>
+            {% endif %}
+        {% else %}
+        <a href="{{ path('app_non_connect') }}">
             <img src="{{ asset('picture/icones/panier.png') }}" alt="" class="img-panier">
         </a>
+        {% endif %}
     </div>
 </footer>
 <script>

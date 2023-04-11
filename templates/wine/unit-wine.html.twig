@@ -23,23 +23,11 @@
                             <p>Année: <u>{{ wine.year }}</u></p>
                             <p>Prix: <u>{{ wine.price }}€</u></p>
                         </div>
-                        <div class="wine-buttons">
-                            <button type="button" class="button-custom-one">
-                                <a href="#">
-                                    Achat
-                                </a>
-                            </button>
-                            <button type="button" class="button-custom-one">
-                                <a href="#">
-                                    Panier
-                                </a>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
                 <p>{{ wine.description }}</p>
             </div>
-
             <div class="wine-id-desktop">
                 <div class="wine-by-id-unit">
                     <img src="{{ asset('picture/recipe-picture/' ~ wine.getPicture()) }}" alt="Photo de la bouteille de vin.">
@@ -47,33 +35,27 @@
                     <div class="wine-button-year">
                         <div class="wine-desc">
                             <p>Année: <u>{{ wine.year }}</u></p>
-                            <p>Prix: <br><u>{{ wine.price }}€</u></p>
+                            <p>Prix: <u>{{ wine.price }}€</u></p>
                         </div>
                         <p>{{ wine.description }}</p>
-                        <div class="wine-buttons">
-                            <button type="button" class="button-custom-one">
-                                <a href="#">
-                                    Achat
-                                </a>
-                            </button>
-                            <button type="button" class="button-custom-one">
-                                <a href="#">
-                                    Panier
-                                </a>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
 
 
-
-
-
-
-
-
-
+            <div class="wine-buttons">
+                {% set defaultWineId = wine.id %}
+                {{ form_start(formCommande) }}
+                {{ form_errors(formCommande) }}
+                {{ form_row(formCommande.submit, { 'label': 'Ajouter'}) }}
+                {{ form_row(formCommande.number) }}
+                {{ form_end(formCommande) }}
+                <button type="button" class="button-custom-one">
+                    <a href="#">
+                        Acheter
+                    </a>
+                </button>
+            </div>
             <div class="wine-id-note">
                 <div class="custom-title-one">
                     <h3>Note</h3>

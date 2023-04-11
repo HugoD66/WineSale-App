@@ -69,7 +69,12 @@
                 </div>
                 <div class="propos-desc">
                     <div class="propos-explain">
-                        <p>Liquorice tiramisu croissant sweet cupcake powder. Pastry gummies gummi bears gummies lemon drops chocolate chocolate cake cookie. Cupcake soufflé powder lollipop biscuit danish chupa chups lemon drops oat cake.</p>
+                        <p>Venez découvrir notre monde de saveurs et de plaisirs, et laissez-vous envoûter par
+                            la magie du vin. Nous avons déjà de nombreuses
+                            <red data-toggle="modal" data-target="#exampleModal">
+                                personnes inscrites !
+                            </red>
+                        </p>
                         <button type="button" class="button-custom-one">
                             {% if app.user %}
                                 <a href="{{ path('app_deja_inscrit') }}">
@@ -93,7 +98,12 @@
                 <div class="propos-desc">
                     <img src="{{ asset('picture/apropos.png') }}" alt="">
                     <div class="propos-explain">
-                        <p>Liquorice tiramisu croissant sweet cupcake powder. Pastry gummies gummi bears gummies lemon drops chocolate chocolate cake cookie. Cupcake soufflé powder lollipop biscuit danish chupa chups lemon drops oat cake.</p>
+                        <p>Venez découvrir notre monde de saveurs et de plaisirs, et laissez-vous envoûter par
+                            la magie du vin. Nous avons déjà de nombreuses
+                            <red data-toggle="modal" data-target="#exampleModal">
+                                personnes inscrites !
+                            </red>
+                        </p>
                         <button type="button" class="button-custom-one">
                             {% if app.user %}
                                 <a href="{{ path('app_deja_inscrit') }}">
@@ -115,7 +125,9 @@
                     <h3>Nos vins</h3>
                     <img src="{{ asset('picture/title/title-bootle.png') }}" alt="" class="title-h3">
                 </div>
-                <div class="carousel-mobile">
+                {% if wines is not empty  %}
+
+                    <div class="carousel-mobile">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -153,7 +165,12 @@
                         </a>
                     </div>
                 </div>
+                {% else %}
+                    <p>Il n'y a aucun vins pour l'instant.</p>
+                {% endif %}
                 <div class="list-wines">
+                    <p>Avec notre expertise et notre passion pour le vin, nous sommes
+                        là pour vous guider et vous conseiller tout au long de votre parcours gustatif</p>
                     <button type="button" class="button-custom-one">
                         <a href="{{ path('app_list_wines') }}">
                             Tous nos vins
@@ -168,14 +185,18 @@
                 </div>
                 <div class="article-mediaquery">
                     <div class="list-wines">
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus expedita iste nulla qui </p>
+                        <p> Avec notre expertise et notre passion pour le vin, nous sommes
+                            là pour vous guider et vous conseiller tout au long de votre parcours gustatif </p>
                         <button type="button" class="button-custom-one">
                             <a href="{{ path('app_list_wines') }}">
                                 Tous nos vins
                             </a>
                         </button>
                     </div>
+                    {% if wines is not empty  %}
+
                     <div class="carousel-desktop">
+
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -202,6 +223,8 @@
                                         </div>
                                     </div>
                                 {% endfor %}
+
+
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -212,7 +235,11 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
+
                     </div>
+                    {% else %}
+                        <p>Il n'y a aucun vins pour l'instant.</p>
+                    {% endif %}
                 </div>
             </div>
         </article>
@@ -267,4 +294,27 @@
         </aside>
         {% include 'fixed/footer.html.twig' %}
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nombre d'utilisateurs : {{ utilisateurs|length}} </h5>
+                </div>
+                <div class="modal-body">
+                    {% for utilisateur in utilisateurs %}
+                        <div class="modal-card-user">
+                            <p>{{ utilisateur.firstname }} {{ utilisateur.lastname }}</p>
+                            <img  src="{{ asset('picture/recipe-picture/' ~ utilisateur.getPicture()) }}" alt="Image de l'utilisateur">
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
